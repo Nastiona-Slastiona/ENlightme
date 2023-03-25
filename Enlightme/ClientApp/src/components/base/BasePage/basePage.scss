@@ -1,0 +1,21 @@
+@import 'src/styles/colors';
+
+.base-page {
+    display: block;
+
+    padding-top: 15px;
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+
+    background-color: $primary-color;
+}
+
+.base-page__content {
+    display: block;
+    width: 100%;
+
+    margin: auto auto;
+    padding-top: 35px;
+    padding-bottom: 20px;
+}

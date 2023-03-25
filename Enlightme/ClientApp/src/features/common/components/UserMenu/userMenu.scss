@@ -1,0 +1,141 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.user-menu__info-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    padding: 30px 10px;
+    min-width: 420px;
+    min-height: 300px;
+    transition: opacity .3s ease-in-out;
+
+    opacity: 0;
+    border-radius: 0 0 20px 15px;
+    background-color: $secondary-color;
+    box-shadow: 3px 3px 7px $primary-color;
+
+    &--active:hover {
+        opacity: 1;
+    }
+}
+
+.user-menu__info {
+    display: block;
+
+    width: 420px;
+    height: fit-content;
+}
+
+.user-menu-info__user-photo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 80px;
+}
+
+.user-menu-info__menu {
+    display: flex;
+    justify-content: end;
+}
+
+.user-menu-info__user-photo {
+    display: block;
+
+    border-radius: 50%;
+}
+
+.user-menu-info__user-photo-img {
+    display: block;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: inherit;
+}
+
+.user-menu-info__user-photo-name {
+    font-size: 28pt;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+
+    width: 250px;
+    padding: 10px 0;
+
+    color: $accent-color;
+}
+
+.user-account-info__settings {
+    position: relative;
+    bottom: 0;
+
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 0 20px;
+}
+
+.user-account-info__menu-container {
+    display: block;
+
+    margin: 30px 0 50px 0;
+
+    color: $accent-color;
+}
+
+.user-account-info__menu-nav {
+    display: flex;
+}
+
+.user-account-info__menu {
+    display: block;
+
+    padding: 0 100px 0 30px;
+
+    @include typography-middle;
+}
+
+.user-account-info__menu-item {
+    display: flex;
+
+    padding: 10px 0;
+
+    gap: 50px;
+}
+
+.user-account-info__menu-item-text {
+    font-size: 18pt;
+
+    display: flex;
+    align-items: center;
+
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+
+    color: $accent-color;
+
+    &:focus {
+        font-weight: bold;
+    }
+
+    &:hover {
+        cursor: pointer;
+
+        border-bottom: 2px solid $accent-color;
+    }
+
+    &:visited {
+        color: $accent-color;
+    }
+}
+
+.user-account-info__menu-item-icon {
+    width: 35px;
+    height: 35px;
+}

@@ -1,0 +1,67 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.reader__container {
+    display: block;
+
+    width: 90%;
+    height: 45rem;
+    margin: 40px auto;
+}
+
+.reader {
+    height: 100%;
+}
+
+.read-book-logo__container {
+    display: flex;
+    justify-content: space-between;
+
+    width: 90%;
+}
+
+.read-book__add-text-button {
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+
+    width: 150px;
+    height: 70px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 10px;
+    background-color: $secondary-color;
+
+    &:hover {
+        background-color: darken($color: $secondary-color, $amount: 3);
+    }
+
+    &:active {
+        background-color: darken($color: $secondary-color, $amount: 10);
+    }
+}
+
+.read-book__add-text {
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    @include typography-primary;
+}
+
+.read-book__data-added {
+    align-self: flex-end;
+
+    padding: 20px 20px 10px 20px;
+
+    color: $secondary-color;
+    border-radius: 15px;
+    background-color: darken($color: $primary-color, $amount: 10);
+    @include typography-small;
+}

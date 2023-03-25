@@ -1,0 +1,59 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.user-cards-list {
+    display: block;
+
+    margin: 40px auto;
+}
+
+.user-card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 90%;
+    margin: 15px auto;
+    padding: 10px;
+
+    border-radius: 8px;
+    background-color: $secondary-color;
+}
+
+.card-item__value {
+    @include typography-primary-bold;
+    font-size: 14pt;
+    margin-left: 40%;
+    transition: 0.4s;
+    cursor: pointer;
+
+    &:hover {
+        font-size: 16pt;
+        font-weight: bolder;
+    }
+}
+
+.card-item__remove-button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.user-cards__show-more {
+    display: flex;
+    justify-content: center;
+
+    padding-top: 30px;
+
+    transition: color .3s ease-in-out;
+
+    color: $secondary-color;
+
+    @include typography-primary-bold;
+
+    &:hover {
+        cursor: pointer;
+
+        color: $accent-color;
+    }
+}

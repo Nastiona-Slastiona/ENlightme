@@ -1,0 +1,47 @@
+@import 'src/styles/colors';
+
+.carousel__container {
+    display: block;
+
+    height: 70%;
+    width: 100%;
+}
+
+.carousel-content {
+    margin-top: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-button__container {
+    position: absolute;
+    top: 350px;
+
+    height: 100%;
+    z-index: 0;
+}
+
+.carousel-button {
+    font-size: 22px;
+    font-weight: bold;
+
+    width: 40px;
+    height: 40px;
+
+    color: $secondary-color;
+    border: none;
+    border-radius: 10px;
+    background-color: $color-dark-less-opacity;
+
+    &:hover {
+        background-color: $color-dark;
+    }
+}
+
+.carousel-button--right {
+    right: 7%;
+}
+
+.carousel-button--left {
+    left: 7%;
+}

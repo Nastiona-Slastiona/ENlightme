@@ -1,0 +1,33 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.input__container {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input {
+    min-width: 250px;
+    height: 50px;
+    padding: 0 25px;
+
+    color: $accent-color;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    background-color: #ffff;
+    box-shadow: 3px 3px 10px lighten($primary-color, 30);
+    @include typography-primary-bold;
+
+    &::placeholder {
+        color: darken($primary-color, 25);
+    }
+}
+
+.input-label {
+    @include typography-small;
+    color: $accent-color;
+    margin: 0 0 0 25px;
+}

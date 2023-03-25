@@ -1,0 +1,20 @@
+@import 'src/styles/colors';
+
+.library__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.library-page-logo__container {
+    display: flex;
+    justify-content: center;
+
+    width: 30%;
+}
+
+.library-page__navbar {
+    display: flex;
+    justify-content: end;
+
+    padding: 0;
+}

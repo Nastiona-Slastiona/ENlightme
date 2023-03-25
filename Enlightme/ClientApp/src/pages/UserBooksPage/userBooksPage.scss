@@ -1,0 +1,34 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.user-book-page-logo__container {
+    display: flex;
+    justify-content: space-between;
+
+    width: 90%;
+}
+
+.user-book-page__input-book-form {
+    margin-top: 30px;
+
+    width: 120px;
+    height: 70px;
+
+    background-color: $secondary-color;
+    border-radius: 15px;
+
+    &::before {
+        content: 'add book';
+        position: relative;
+        top: 30%;
+        left: 10%;
+
+        @include typography-primary;
+    }
+}
+
+.user-book-page__input-book {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,76 @@
+@import 'src/styles/colors';
+
+.book-advise-section__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+.book-advise-section {
+    display: flex;
+
+    gap: 80px;
+}
+
+.book-advise-info {
+    font-family: 'Lucida Sans', sans-serif;
+    font-size: 16pt;
+
+    color: $secondary-color;
+}
+
+.book-advise-info__title {
+    font-size: 45pt;
+    font-weight: bold;
+
+    width: 500px;
+    height: 150px;
+
+    word-wrap: break-word;
+}
+
+.book-advise-info__description {
+    overflow: hidden;
+
+    max-width: 350px;
+    min-height: 50px;
+    padding: 10px 25px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
+.book-advise-button__container {
+    padding: 30px 25px;
+}
+
+.book-advise-button {
+    font-size: 16pt;
+
+    width: 230px;
+    height: 68px;
+
+    transition: .3s ease-in;
+
+    color: $accent-color;
+    border: none;
+    border-radius: 15px;
+    background-color: $secondary-color;
+
+    &:hover {
+        color: $secondary-color;
+        background-color: $accent-color;
+    }
+}
+
+.book-advise-info__cover {
+    width: 220px;
+    height: 300px;
+
+    border-radius: 15px;
+    background-color: $secondary-color;
+}

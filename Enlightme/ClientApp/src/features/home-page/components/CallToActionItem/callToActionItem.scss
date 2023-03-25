@@ -1,0 +1,30 @@
+@import 'src/styles/colors';
+
+.call-to-action-item {
+    display: flex;
+    justify-content: center;
+
+    width: 120px;
+    height: 60%;
+
+    transition: transform .3s ease-in-out;
+
+    border: 2px dashed $accent-color;
+    border-radius: 30px;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.call-to-action-item__image {
+    display: flex;
+    align-self: center;
+}
+
+.call-to-action-item__image--colored {
+    display: flex;
+    align-self: center;
+
+    justify-self: center;
+}

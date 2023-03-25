@@ -1,0 +1,69 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/typography';
+
+.header-container {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    height: $header-height;
+
+    background-color: #f0f4f4;
+    box-shadow: 1px 5px 10px $accent-color;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+
+    margin-inline: 15px;
+}
+
+.header-main {
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    width: 100%;
+
+    @include typography-small;
+    gap: 50px;
+}
+
+.header-menu__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    margin: 0 20px;
+    transition: 0.3s;
+
+    &--active {
+        margin-left: 400px;
+        z-index: 2;
+    }
+}
+
+.header-menu {
+    width: 25px;
+    height: 20px;
+}
+
+// .header-search {
+//     height: 100%;
+// }
+
+.header-search .input__container {
+    height: 20px;
+    // margin-bottom: 10px;
+}

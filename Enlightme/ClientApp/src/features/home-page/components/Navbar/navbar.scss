@@ -1,0 +1,61 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/typography';
+
+.navbar {
+    display: flex;
+    align-items: center;
+
+    width: $navbar-width;
+    min-width: 600px;
+    height: 60px;
+    margin: 0 20px;
+    padding: 0 80px;
+
+    border-radius: 0 0 5px 45px;
+    background-color: $navbar-intro-color;
+
+    @include typography-primary;
+    gap: 100px;
+}
+
+.navbar__item {
+    position: relative;
+
+    transition: transform .3s;
+    text-decoration: none;
+
+    color: $secondary-color;
+
+    &::before {
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+
+        width: 100%;
+        height: 2px;
+
+        content: '';
+        transition: transform .3s ease-in-out;
+        transform: scaleX(0);
+        transform-origin: right;
+
+        border-radius: 4px;
+        background-color: $accent-color;
+    }
+
+    &:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    &--active {
+        border-bottom: 3px solid $accent-color;
+    }
+}
+
+a:hover {
+    display: block;
+
+    transform: scale(1.1);
+}

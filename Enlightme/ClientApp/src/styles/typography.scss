@@ -1,0 +1,26 @@
+@mixin typography-primary {
+    font-family: 'Livvic';
+    font-size: 18pt;
+}
+
+@mixin typography-primary-bold {
+    @include typography-primary();
+    font-weight: bold;
+}
+
+@mixin typography-small {
+    @include typography-primary();
+    font-size: 14pt;
+}
+
+@mixin typography-middle {
+    @include typography-primary();
+    font-size: 26pt;
+    font-weight: 300;
+}
+
+@mixin typography-header {
+    @include typography-primary();
+    font-size: 50pt;
+    font-weight: 600;
+}

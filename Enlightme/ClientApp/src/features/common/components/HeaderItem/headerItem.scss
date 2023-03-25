@@ -1,0 +1,17 @@
+@import "src/styles/colors";
+
+.header-item__container {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.header-item__title {
+    text-decoration: none;
+    color: $font-dark;
+
+    &:hover {
+        border-bottom: 1px dashed $font-dark;
+    }
+}

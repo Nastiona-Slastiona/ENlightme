@@ -1,0 +1,42 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.login-page__section {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 80px;
+}
+
+.login-page__form {
+    background-color: $secondary-color;
+    border-radius: 20px;
+    display: block;
+    padding: 30px 150px;
+    box-shadow: 3px 3px 7px lighten($color: $primary-color, $amount: 10);
+}
+
+.login-page__form-fields {
+    width: 380px;
+}
+
+.login-page__button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-page__button {
+    @include typography-primary;
+    height: 50px;
+    width: 200px;
+    border-radius: 20px;
+    border: none;
+    background-color: $accent-color;
+    color: $secondary-color;
+    font-weight: 600;
+
+    &:hover {
+        background-color: darken($color: $accent-color, $amount: 10);
+    }
+}

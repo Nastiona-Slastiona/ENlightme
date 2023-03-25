@@ -1,0 +1,23 @@
+.pages-menu__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pages-menu-logo__container {
+    display: flex;
+    justify-content: center;
+
+    width: 30%;
+}
+
+.pages-menu-logo {
+    width: 130px;
+    height: 110px;
+}
+
+.pages-menu__navbar {
+    display: flex;
+    justify-content: end;
+
+    padding: 0;
+}

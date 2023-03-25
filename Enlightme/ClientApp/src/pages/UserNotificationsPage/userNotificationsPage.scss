@@ -1,0 +1,54 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+
+.notification-list {
+    display: block;
+
+    width: 60%;
+    max-width: 800px;
+    margin: 80px auto;
+}
+
+.notification__container {
+    display: flex;
+    align-items: center;
+
+    height: 80px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+
+    border-radius: 15px;
+    background-color: $secondary-color;
+    box-shadow: 2px 2px 7px $primary-color;
+
+    gap: 40px;
+}
+
+.notification-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.notification-message {
+    margin-top: 10px;
+}
+
+.notification {
+    transition: .3s ease-in-out;
+    text-decoration: none;
+
+    color: $accent-color;
+
+    @include typography-small;
+
+    &:hover {
+        border-bottom: 2px solid $accent-color;
+    }
+}
+
+.notification span {
+    padding: 0 0 0 30px;
+
+    @include typography-primary-bold;
+}
