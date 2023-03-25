@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Enlightme.Controllers;
 
-[Route("auth")]
+[Route("api")]
 [ApiController]
 public class AuthController : Controller
 {
