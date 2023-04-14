@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from "react";
 import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import BasePage from "src/components/base/BasePage/basePage";
 import Input from 'components/base/Input/input';
 import PageName from 'src/features/common/components/PageName/pageName';
-import PagesMenu from "features/common/components/PagesMenu/pagesMenu";
 
 import './loginPage.scss';
 import requestHelper from "src/helpers/requestHelper";
@@ -15,12 +15,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function LoginPage() {
     const dispatch = useDispatch();
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [redirect, setRedirect] = useState('');
+    
     const isAuth = useSelector(state => state.users.isAuth);
 
-    const onUsernameChange = useCallback(e => {
-        setUsername(e.target.value);
+    const onEmailChange = useCallback(e => {
+        setEmail(e.target.value);
     }, []);
 
     const onPasswordChange = useCallback(e => {
@@ -30,21 +32,23 @@ export default function LoginPage() {
     const onFormSubmit = useCallback(async e => {
         e.preventDefault();
 
-        const response = await requestHelper.get(serviceUrls.signIn, {
+        const response = await requestHelper.get(serviceUrls.login, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({
                 password,
-                username: username
+                email: email
             }),
-        });
+        }, isAuth);
 
         if (response) {
-            localStorage.setItem('access', JSON.stringify(response.access))
-            localStorage.setItem('refresh', JSON.stringify(response.refresh))
-            localStorage.setItem('isAuth', JSON.stringify(true))
+            localStorage.setItem('access', JSON.stringify(response.accessToken))
+            localStorage.setItem('refresh', JSON.stringify(response.refreshToken))
+            localStorage.setItem('isAuth', JSON.stringify(true));
+            setRedirect(true);
 
             dispatch({
                 type: 'users/setUserData',
@@ -53,29 +57,31 @@ export default function LoginPage() {
                 }
             });
         }
-    }, [password, username]);
+    }, [password, email, dispatch]);
 
-    if (isAuth) {
+    if (isAuth || redirect) {
         return (
             <Navigate to={routes.HOME} />
         );
     }
 
     return (
-        <BasePage isLoginPage={true}>
-            <PagesMenu />
-            <PageName title={'Log In'} />
-            <section className="login-page__section" onSubmit={onFormSubmit}>
-                <form className="login-page__form">
+        <div className="page-container">
+            <BasePage isLoginPage>
+                <PageName title={'Log In'} />
+                <form className="login-page__form" onSubmit={onFormSubmit}>
                     <div className="login-page__form-fields">
-                        <Input type={'text'} placeholder={'username'} onChange={onUsernameChange} />
-                        <Input type={'password'} placeholder={'password'} onChange={onPasswordChange} />
+                        <Input type={'text'} placeholder={'email'} onChange={onEmailChange} withBorder={true} />
+                        <Input type={'password'} placeholder={'password'} onChange={onPasswordChange} withBorder={true} />
                     </div>
+                    <span className="login-page__register">or you can
+                        <Link to={routes.SIGN_UP} className='login-page__register-link'>register</Link>
+                    </span>
                     <div className="login-page__button-container">
-                        <button type="submit" className="login-page__button"> log in</button>
+                        <button type="submit" className="login-page__button">log in</button>
                     </div>
                 </form>
-            </section>
-        </BasePage>
+            </BasePage>
+        </div>
     )
 }

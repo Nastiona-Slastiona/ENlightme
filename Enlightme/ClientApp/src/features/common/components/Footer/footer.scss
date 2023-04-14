@@ -2,14 +2,12 @@
 @import 'src/styles/typography';
 
 .footer__container {
-    position: relative;
+    position: absolute;
     bottom: 0;
 
     width: 100%;
-    padding-top: 50px;
 
-    border-top: 3px dashed $secondary-color;
-    background-color: $primary-color;
+    border-top: 2px solid $secondary-color;
 }
 
 .footer {
@@ -21,7 +19,7 @@
     height: 50px;
 
     &--light {
-        background-color: $secondary-color;
+        background-color: $primary-color-lighter;
     }
 
     &--dark {
@@ -30,9 +28,8 @@
 }
 
 .footer-inner {
-    font-weight: 600;
+    color: $font-dark;
+    font-weight: bold;
 
-    color: $accent-color;
-
-    @include typography-primary;
+    @include typography-small;
 }

@@ -22,4 +22,5 @@ public class User: IHasId
     public string Password { get; set; }
     public bool IsSuperUser { get; set; }
 
+    public byte[] Image { get; set; }
 }

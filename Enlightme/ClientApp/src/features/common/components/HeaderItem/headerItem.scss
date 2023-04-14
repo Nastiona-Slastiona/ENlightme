@@ -1,4 +1,5 @@
 @import "src/styles/colors";
+@import "src/styles/typography";
 
 .header-item__container {
     display: flex;
@@ -7,11 +8,16 @@
     gap: 15px;
 }
 
+.header-item__icon {
+    width: 30px;
+    height: 30px;
+}
+
 .header-item__title {
+    @include typography-small;
+    
+    min-width: fit-content;
     text-decoration: none;
     color: $font-dark;
-
-    &:hover {
-        border-bottom: 1px dashed $font-dark;
-    }
+    transition: ease-in-out 2ms;
 }

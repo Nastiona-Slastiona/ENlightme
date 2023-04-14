@@ -1,12 +1,12 @@
-import { useSelector } from "react-redux";
 import serviceUrls from "src/constants/serviceUrls";
 
 const requestHelper = {
-    get: async (url, options = { method: 'GET' }, isAuth = false) => {
-        if (isAuth) {
+    get: async (url, options = { method: 'GET' }, isAuth = false, withAuthorize = false) => {
+        if (withAuthorize) {
             const accessToken = JSON.parse(localStorage.getItem('access'));
             options.headers.Authorization = `Bearer ${accessToken}`;
         }
+
         let data = await getRequest(url, options);
 
         if (isAuth && data.status === 401 && await refreshToken()) {
@@ -14,7 +14,7 @@ const requestHelper = {
             options.headers.Authorization = `Bearer ${accessToken}`;
             data = await getRequest(url, options);
         }
-
+        
         return data;
     }
 };
@@ -40,10 +40,11 @@ async function refreshToken() {
     return false
 }
 
-function errorHandler(response, methodName) {
+function errorHandler(response) {
     if (!response.ok) {
         return response.text().then(text => { throw new Error(text) });
     }
+
     return response.json();
 }
 

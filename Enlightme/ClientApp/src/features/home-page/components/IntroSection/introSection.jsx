@@ -7,7 +7,6 @@ import './introSection.scss';
 export default function IntroSection() {
     return (
         <section className='intro-section__container'>
-            <PagesMenu />
             <BookAdviseSection />
         </section>
     )

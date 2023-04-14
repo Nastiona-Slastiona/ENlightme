@@ -42,6 +42,6 @@ export default function BookAdviseSection() {
     const bookItems = books.map((book, ind) => <BookAdviseItem book={book} index={ind} />);
 
     return (
-        <Carousel slides={bookItems} />
+        <div>hi</div>
     );
 }

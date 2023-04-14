@@ -28,7 +28,6 @@ export default function LibraryPage() {
 
     return (
         <BasePage>
-            <PagesMenu />
             <PageName title={'Library'} />
             <BookSection books={books} genres={genres} />
         </BasePage>

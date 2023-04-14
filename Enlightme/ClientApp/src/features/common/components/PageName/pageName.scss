@@ -4,36 +4,8 @@
 .page-name__container {
     text-align: center;
 
-    color: #ffff;
+    color: $accent-color;
     margin-top: 50px;
 
     @include typography-header;
-
-
-    &::before,
-    &::after {
-        position: relative;
-
-        display: inline-block;
-
-        width: 35%;
-        height: 2px;
-
-        content: '';
-        vertical-align: middle;
-
-        border-top: 3px dashed $secondary-color;
-    }
-
-    &::before {
-        right: .9em;
-
-        margin-left: -50%;
-    }
-
-    &::after {
-        left: .9em;
-
-        margin-right: -50%;
-    }
 }

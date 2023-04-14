@@ -1,5 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
+import requestHelper from 'src/helpers/requestHelper';
+import serviceUrls from 'src/constants/serviceUrls';
 
 import routes from "src/constants/routes";
 
@@ -9,25 +11,47 @@ import edit from 'src/static/images/edit';
 import puzzle from 'src/static/images/puzzle';
 import bell from 'src/static/images/bell';
 import add_user from 'src/static/images/add-user';
-import account from 'src/static/images/Account';
+import sign_in from 'src/static/images/sign-in';
+import defaultUser from 'src/static/images/defaultImage';
 
 import './userMenu.scss';
 import { useDispatch, useSelector } from "react-redux";
 
-export default function UserMenu({ isActive, name, image }) {
+export default function UserMenu({
+    isActive,
+    name,
+    image,
+    setIsActive
+}) {
     const dispatch = useDispatch();
     const isAuth = useSelector(state => state.users.isAuth);
+
     const onLogoutClick = useCallback(async () => {
-        localStorage.removeItem('isAuth');
+        const response = await requestHelper.get(serviceUrls.signOut, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        }, isAuth, true);
+        
+        if (response) {
+            setIsActive(false);
+            localStorage.removeItem('isAuth');
+            localStorage.removeItem('access');
+            localStorage.removeItem('refresh');
+            
+            dispatch({
+                type: 'users/setUserData',
+                payload: {
+                    isAuth: false,
+                }
+            });
+        }
 
-        dispatch({
-            type: 'users/setUserData',
-            payload: {
-                isAuth: false,
-            }
-        });
 
-    }, [dispatch]);
+    }, [dispatch, isAuth, setIsActive]);
+    const avatar = image ? `data:image/jpeg;base64,${image}` : defaultUser;
 
     return (
         <div>
@@ -37,7 +61,7 @@ export default function UserMenu({ isActive, name, image }) {
                         <div className='user-menu__info'>
                             <div className='user-menu-info__user-photo-container'>
                                 <div className='user-menu-info__user-photo'>
-                                    <img className='user-menu-info__user-photo-img' src={image} />
+                                    <img className='user-menu-info__user-photo-img' src={avatar} />
                                     <span className='user-menu-info__user-photo-name'>{name}</span>
                                 </div>
                             </div>
@@ -50,7 +74,7 @@ export default function UserMenu({ isActive, name, image }) {
                                                 to={routes.USER_BOOKS}
                                                 className='user-account-info__menu-item-text'
                                             >
-                                                my library
+                                                my uploads
                                             </Link>
                                         </li>
                                         <li className='user-account-info__menu-item'>
@@ -102,13 +126,13 @@ export default function UserMenu({ isActive, name, image }) {
                                         </a>
                                     </li>
                                     <li className='user-account-info__menu-item'>
-                                        <img src={account} className='user-account-info__menu-item-icon' />
+                                        <img src={sign_in} className='user-account-info__menu-item-icon' />
                                         <a
                                             id='account'
-                                            href={routes.ACCOUNT}
+                                            href={routes.LOG_IN}
                                             className='user-account-info__menu-item-text'
                                         >
-                                            Log In
+                                            Sign In
                                         </a>
                                     </li>
                                 </ul>
@@ -118,7 +142,10 @@ export default function UserMenu({ isActive, name, image }) {
                 }
                 <div className='user-account-info__settings'>
                     {
-                        isAuth && <img src={logout} onClick={onLogoutClick} />
+                        isAuth && 
+                        <button className="user-account-info__delete-button" onClick={onLogoutClick}>
+                            <img src={logout}  />
+                        </button>
                     }
                 </div>
             </div>

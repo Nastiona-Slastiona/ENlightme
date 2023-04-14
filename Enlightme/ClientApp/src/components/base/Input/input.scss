@@ -18,8 +18,11 @@
     border-radius: 15px;
     outline: none;
     background-color: #ffff;
-    box-shadow: 3px 3px 10px lighten($primary-color, 30);
     @include typography-primary-bold;
+
+    &--bordered {
+        border: 2px solid $secondary-color;
+    }
 
     &::placeholder {
         color: darken($primary-color, 25);

@@ -17,7 +17,7 @@ function Footer({ mode }) {
         <footer className='footer__container'>
             <div className={containerClassNames}>
                 <span className='footer-inner'>
-                    © Readoom, 2022
+                    © Enlightme, 2023
                 </span>
             </div>
         </footer>

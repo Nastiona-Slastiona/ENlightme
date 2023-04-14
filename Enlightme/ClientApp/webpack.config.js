@@ -3,15 +3,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
 const isDevelopmentMode = process.env.NODE_ENV === 'development';
 
-const generateStyleLoader = loaderName => {
+function generateStyleLoader(loaderName, isDevelopmentMode) {
     return [
         MiniCssExtractPlugin.loader,
         {
             loader: 'css-loader',
             options: {
+                url: false,
                 modules: false,
                 importLoaders: 2,
                 sourceMap: isDevelopmentMode
@@ -24,24 +24,96 @@ const generateStyleLoader = loaderName => {
             }
         },
         {
+            loader: 'resolve-url-loader',
+            options: {}
+        }, 
+        {
             loader: loaderName,
             options: {
-                sourceMap: isDevelopmentMode,
+                sourceMap: true,
                 sassOptions: {
                     includePaths: ['src', 'node_modules']
                 }
             }
         }
     ];
-};
+}
 
-const generateUrlLoader = (mimeType, limit = 10000) => [{
-    loader: 'url-loader',
-    options: {
-        limit,
-        mimetype: mimeType
-    }
-}];
+function generateUrlLoader(mimeType, limit = 10000) {
+    return [
+        {
+            loader: 'url-loader',
+            options: {
+                limit,
+                mimetype: mimeType
+            }
+        }
+        // {
+        //     loader: 'file-loader',
+        //     options: {
+        //       name: '/public/icons/[name].[ext]'
+        //     }
+        // }
+    ];
+}
+
+function getRules(isDevelopmentMode) {
+    return [
+        {
+            test: /\.js$|jsx/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env', '@babel/preset-react']
+                }
+            }
+        },
+        {
+            test: /\.s?css$/,
+            use: generateStyleLoader('sass-loader', isDevelopmentMode)
+        },
+        {
+            test: /\.(woff|woff2|ttf|eot)$/,
+            type: 'asset/resource',
+            generator: {
+                filename: '[contenthash][ext]'
+            }
+        },
+        {
+            test: /\.svg$/,
+            loader: '@svgr/webpack',
+            options: {
+                ref: true,
+                svgoConfig: {
+                    plugins: [
+                        {
+                            name: 'preset-default',
+                            params: {
+                                overrides: {
+                                    removeViewBox: false,
+                                    inlineStyles: {
+                                        // see available settings on https://github.com/svg/svgo/issues/296#issuecomment-380208905
+                                        onlyMatchedOnce: false
+                                    }
+                                }
+                            }
+                        },
+                        'removeDimensions'
+                    ]
+                }
+            }
+        },
+        {
+            test: /\.(png|jpg)$/,
+            use: generateUrlLoader('image/png')
+        },
+        {
+            test: /\.gif$/,
+            use: generateUrlLoader('image/gif')
+        }
+    ];
+};
 
 module.exports = {
     mode: 'development',
@@ -62,44 +134,7 @@ module.exports = {
         new MiniCssExtractPlugin()
     ],
     module: {
-        rules: [
-            {
-                test: /\.js$|jsx/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                    }
-                }
-            },
-            {
-                test: /\.s?css$/i,
-                use: generateStyleLoader('sass-loader')
-            },
-            {
-                test: /\.(png|jpg|gif)$/i,
-                use: generateUrlLoader('image/png')
-            },
-            {
-                test: /\.svg$/,
-                loader: '@svgr/webpack',
-                options: {
-                    ref: true,
-                    svgoConfig: {
-                        plugins: [
-                            {
-                                removeViewBox: false,
-                                removeDimensions: true,
-                                inlineStyles: {
-                                    onlyMatchedOnce: false
-                                }
-                            }
-                        ]
-                    }
-                }
-            }
-        ]
+        rules: getRules()
     },
     resolve: {
         alias: {
@@ -108,9 +143,8 @@ module.exports = {
             src: path.resolve(__dirname, 'src'),
             pages: path.resolve(__dirname, 'src/pages'),
             features: path.resolve(__dirname, 'src/features'),
-            authentication: path.resolve(__dirname, 'src/features/authentication')
         },
         enforceExtension: false,
-        extensions: ['.jsx', '.js', '.css', '.wasm', '.ico', '.gif', '.png', '.svg', '...']
+        extensions: ['.jsx', '.js', '.css', '.wasm', '.ico', '.gif', '.png', '.jpg', '.svg', '...']
     }
 };

@@ -45,24 +45,24 @@ const UserAccount = () => {
         setImage(e.target.files[0]);
     }, [setImage]);
 
-    useEffect(() => {
-        async function fetchUser() {
-            const response = await requestHelper.get(serviceUrls.getUserSettings, { method: 'GET', headers: {} }, true);
+    // useEffect(() => {
+    //     async function fetchUser() {
+    //         const response = await requestHelper.get(serviceUrls.getUserSettings, { method: 'GET', headers: {} }, true);
 
-            if (response) {
-                setUser(response);
-                setFullName(response.first_name + ' ' + response.last_name);
-                setImage(response.photo);
-                setUsername(response.username);
-                setNotifications(response.send_notifications);
-            }
-        }
+    //         if (response) {
+    //             setUser(response);
+    //             setFullName(response.first_name + ' ' + response.last_name);
+    //             setImage(response.photo);
+    //             setUsername(response.username);
+    //             setNotifications(response.send_notifications);
+    //         }
+    //     }
 
-        if (!user) {
-            fetchUser();
-        }
+    //     if (!user) {
+    //         fetchUser();
+    //     }
 
-    }, [setUser]);
+    // }, [setUser]);
 
     const onFormSubmit = useCallback(async (e) => {
         if (username !== user.username || fullName !== user.first_name + ' ' + user.last_name || image !== user.photo || notifications !== user.send_notifications) {            
@@ -92,12 +92,9 @@ const UserAccount = () => {
     if (!user) {
         return;
     }
-    
 
-
-    return isAuth ? (
+    return (
         <BasePage>
-            <PagesMenu />
             <PageName title={'My account'} />
             <section className='user-account__container'>
                 <form className='user-account__form' id='form' onSubmit={onFormSubmit}>
@@ -159,7 +156,7 @@ const UserAccount = () => {
                 </form>
             </section>
         </BasePage>
-    ) : <AuthPage />
+    )
 }
 
 export default UserAccount;

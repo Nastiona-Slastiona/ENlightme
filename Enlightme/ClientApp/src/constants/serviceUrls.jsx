@@ -1,5 +1,5 @@
 const serviceUrls = {
-    getUser: 'http://localhost:8000/api/user/',
+    getUser: 'http://localhost:8000/auth/user/',
     getUserPhoto: 'http://localhost:8000/api/user/photo/',
     getUserSettings: 'http://localhost:8000/api/settings/',
     updateUserSettings: 'http://localhost:8000/api/settings/',
@@ -28,8 +28,8 @@ const serviceUrls = {
     getNotifications: 'http://localhost:8000/api/notifications/',
     getGenres: 'http://localhost:8000/api/genres/',
 
-    signUp: 'http://localhost:8000/auth/register/',
-    signIn: 'http://localhost:8000/auth/login/',
+    registration: 'http://localhost:8000/auth/register/',
+    login: 'http://localhost:8000/auth/login/',
     refreshToken: 'http://localhost:8000/auth/login/refresh/',
     signOut: 'http://localhost:8000/auth/logout/',
 

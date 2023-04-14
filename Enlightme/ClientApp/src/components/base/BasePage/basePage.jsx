@@ -9,61 +9,52 @@ import { useEffect, useState } from 'react';
 import requestHelper from 'src/helpers/requestHelper';
 import serviceUrls from 'src/constants/serviceUrls';
 
-import routes from "src/constants/routes";
-
 export default function BasePage({ children, isLoginPage = false, needAccess = false }) {
     const dispatch = useDispatch();
-    const isAuth = useSelector(state => state.users.isAuth);
-    const [name, setName] = useState('');
-    const [image, setImage] = useState('');
+    const isAuth = JSON.parse(localStorage.getItem('isAuth'));
+    const userName = useSelector(state => state.users.username);
+    const [image, setImage] = useState();
 
     useEffect(() => {
         (
             async () => {
-                const isAuth = JSON.parse(localStorage.getItem('isAuth'));
-
-                if (isAuth) {
+                if (!userName && isAuth) {
                     const user = await requestHelper.get(
                         serviceUrls.getUser, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',
                         },
+                        credentials: 'include'
                     }, isAuth);
-                    const photo = await requestHelper.get(
-                        serviceUrls.getUserPhoto, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }, isAuth);
-                    setName(user.username);
-                    setImage(photo.photo);
-                    dispatch({
-                        type: 'users/setUserData',
-                        payload: {
-                            isAuth: true,
-                            username: user.username
-                        }
-                    });
-                }
 
-                if (needAccess && !isAuth) {
-                    window.location.replace(routes.LOG_IN);
+                    if (user) {
+                        setImage(user.image)
+                        dispatch({
+                            type: 'users/setUserData',
+                            payload: {
+                                isAuth: true,
+                                username: user.firstName
+                            }
+                        });
+                    }
                 }
-            })();
-    });
-    // }
+            }
+        )();
+
+        // if (!isAuth && !isLoginPage) {
+        //     window.location.replace(routes.LOG_IN);
+        // }
+    }, [userName]);
+
 
     return (
-        <div>
-            <div className='base-page'>
-                <Header isLoginPage={isLoginPage} name={name} image={image} />
-                <div className='base-page__content'>
-                    {children}
-                </div>
+        <div className='base-page'>
+            <Header name={userName} image={image} />
+            <div className='base-page__content'>
+                {children}
             </div>
-            <Footer mode='Light' />
+            <Footer />
         </div>
     )
 }

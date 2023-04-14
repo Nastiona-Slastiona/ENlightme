@@ -177,7 +177,6 @@ export default function ReadBookPage() {
     return (
         <BasePage needAccess={true}>
             <div className="read-book-logo__container">
-                <Logo />
                 {
                     translation && (
                         <div className="read-book__data-added">

@@ -11,18 +11,10 @@ import './aboutPage.scss';
 export default function AboutPage() {
     return (
         <BasePage>
-            <div className="about-page__header">
-                <div className="about-page-logo__container">
-                    <Logo />
-                </div>
-                <div className='about-page__navbar'>
-                    <Navbar />
-                </div>
-            </div>
             <PageName title={'About Us'} />
             <div className="about-page-text__container">
                 <span className="about-page__text">
-                    We created <b>READOOM</b> special for you ! <br /><br />Here you can read different books. <br/><br />Create note on interesting thoughts. <br /><br />And learn new words by creating cards!
+                    We created <b>Enlightme</b> special for you ! <br /><br />Here you can read different books. <br/><br />Create note on interesting thoughts. <br /><br />And learn new words by creating cards!
                 </span>
             </div>
             <div className="about-page-call-to-action">

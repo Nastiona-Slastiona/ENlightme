@@ -1,40 +1,75 @@
 @import 'src/styles/colors';
 @import 'src/styles/typography';
 
-.login-page__section {
-    display: flex;
-    justify-content: center;
+.login-page__form {
+    z-index: 2;
 
+    display: block;
+
+    width: fit-content;
+    margin: 0 auto;
     margin-top: 80px;
+    padding: 30px 50px;
+
+    border: 3px solid $primary-color-lighter;
+    border-radius: 20px;
+    background-color: $primary-color--less-opacity;
 }
 
-.login-page__form {
-    background-color: $secondary-color;
-    border-radius: 20px;
-    display: block;
-    padding: 30px 150px;
-    box-shadow: 3px 3px 7px lighten($color: $primary-color, $amount: 10);
+.login-page__register {
+    display: flex;
+    justify-content: center;
+    color: $font-light-dark;
+    @include typography-primary-bold;
+    @include typography-primary-hight;
+}
+
+.login-page__register-link {
+    color: inherit;
+    margin-left: 10px;
+
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        color: $font-dark;
+    }
+}
+
+.page-container {
+    .base-page {
+        background-image: url('login_background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
 
 .login-page__form-fields {
+    display: block;
+
     width: 380px;
+    margin: 0 auto;
 }
 
 .login-page__button-container {
-    width: 100%;
     display: flex;
     justify-content: center;
+
+    width: 100%;
+    margin-top: 90px;
 }
 
 .login-page__button {
-    @include typography-primary;
-    height: 50px;
-    width: 200px;
-    border-radius: 20px;
-    border: none;
-    background-color: $accent-color;
-    color: $secondary-color;
     font-weight: 600;
+
+    width: 200px;
+    height: 50px;
+
+    color: $secondary-color;
+    border: none;
+    border-radius: 20px;
+    background-color: $accent-color;
+
+@include typography-primary;
 
     &:hover {
         background-color: darken($color: $accent-color, $amount: 10);

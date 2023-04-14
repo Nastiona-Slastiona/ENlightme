@@ -1,6 +1,11 @@
 @mixin typography-primary {
-    font-family: 'Livvic';
+    font-family: 'Raleway', sans-serif;
     font-size: 18pt;
+}
+
+@mixin typography-primary-hight {
+    @include typography-primary();
+    font-size: 22pt;
 }
 
 @mixin typography-primary-bold {

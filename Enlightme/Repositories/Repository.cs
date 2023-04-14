@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Enlightme.Repositories
 {
-    public class Repository<TContext,TEntity>
+    public class Repository<TContext, TEntity>
         where TContext : DbContext
         where TEntity : class, IHasId
     {
@@ -18,12 +18,25 @@ namespace Enlightme.Repositories
             DbSet = dataContext.Set<TEntity>();
         }
 
-        public TEntity Create(TEntity entity)
+        public async Task<TEntity> Create(TEntity entity)
         {
-            dataContext.Add<TEntity>(entity);
-            entity.Id = dataContext.SaveChanges();
+            await dataContext.AddAsync<TEntity>(entity);
+            await dataContext.SaveChangesAsync();
 
             return entity;
+        }
+
+        public async Task Delete(TEntity entity)
+        {
+            dataContext.Remove(entity);
+            await dataContext.SaveChangesAsync();
+        }
+
+        public async Task Delete(Specification<TEntity> specification)
+        {
+            await DbSet.Where(specification.ToExpression()).ExecuteDeleteAsync();
+
+            await dataContext.SaveChangesAsync();
         }
 
         protected virtual IQueryable<TEntity> GetDbSet()
@@ -31,7 +44,7 @@ namespace Enlightme.Repositories
             return DbSet;
         }
 
-        public TEntity GetFirstOrDefault<TEntity>(Specification<TEntity> specification)
+        public async Task<TEntity> GetFirstOrDefault<TEntity>(Specification<TEntity> specification)
         {
             IQueryable<TEntity> query = (IQueryable<TEntity>)GetDbSet();
             Expression<Func<TEntity, bool>> expression = specification?.ToExpression();
@@ -40,7 +53,7 @@ namespace Enlightme.Repositories
                 query= query.Where(expression);
             }
 
-            return query.FirstOrDefault();
+            return await query.FirstOrDefaultAsync();
         }
     }
 }

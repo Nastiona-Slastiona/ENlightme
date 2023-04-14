@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useCallback } from 'react';
 
 import './input.scss';
@@ -10,10 +11,12 @@ export default function Input({
     lang,
     name,
     onChange,
+    withBorder
 }) {
+    const inputClassName = classNames('input', { 'input--bordered' : withBorder });
 
     return (
-        <div className='input__container'>
+        <div className='input__container' >
             {
                 label && (
                     <label className='input-label'>{label}</label>
@@ -23,7 +26,7 @@ export default function Input({
                 type={type}
                 defaultValue={value}
                 placeholder={placeholder}
-                className='input'
+                className={inputClassName}
                 onChange={onChange}
                 lang={lang}
                 name={name}

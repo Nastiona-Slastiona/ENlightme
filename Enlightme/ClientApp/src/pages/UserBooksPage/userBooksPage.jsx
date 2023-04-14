@@ -49,7 +49,6 @@ export default function UserBooksPage() {
     return (
         <BasePage needAccess={true}>
             <div className="user-book-page-logo__container">
-                <Logo />
                 <form className="user-book-page__input-book-form" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
                     <input type='file' accept='.epub' className="user-book-page__input-book" onChange={handleSubmit} />
                 </form>

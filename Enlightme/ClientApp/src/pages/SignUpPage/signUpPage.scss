@@ -9,50 +9,57 @@
 }
 
 .sign-up-page__form {
-    background-color: $secondary-color;
-    border-radius: 20px;
     display: block;
+
     padding: 50px 70px;
-    box-shadow: 3px 3px 7px $primary-color;
+
+    border: 3px solid $primary-color-lighter;
+    border-radius: 20px;
+    background-color: $primary-color--less-opacity;
 }
 
 .sign-up-page__form-fields {
     display: flex;
-
     justify-content: center;
+
     gap: 50px;
 }
 
 .sign-up-page__button-container {
-    width: 100%;
     display: flex;
     justify-content: center;
+
+    width: 100%;
 }
 
 .sign-up-page__button {
-    @include typography-primary;
-    height: 50px;
-    width: 200px;
-    border-radius: 20px;
-    border: none;
-    background-color: $accent-color;
-    color: $secondary-color;
     font-weight: 600;
+
+    width: 200px;
+    height: 50px;
+
+    color: $secondary-color;
+    border: none;
+    border-radius: 20px;
+    background-color: $accent-color;
+
+@include typography-primary;
 
     &:hover {
         background-color: darken($color: $accent-color, $amount: 10);
     }
 }
 
-.sign-up-page__photo-input {
+.sign-up-page__photo-input input {
     display: none;
 }
 
-.sign-up-page__photo {
+.sign-up-page__photo-input {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
+
+    height: 35px;
 
     color: $secondary-color;
     border: none;
@@ -60,5 +67,22 @@
     outline: none;
     background-color: $accent-color;
     box-shadow: 3px 3px 10px lighten($primary-color, 30);
-    @include typography-primary-bold;
+
+@include typography-primary-bold;
+}
+
+.sign-up-page__photo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+.sign-up-page__photo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    border-radius: 50%;
 }

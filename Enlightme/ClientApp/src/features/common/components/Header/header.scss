@@ -3,18 +3,23 @@
 @import 'src/styles/typography';
 
 .header-container {
-    position: fixed;
-    z-index: 2;
+    position: absolute;
     top: 0;
+    left: 5%;
+    right: 5%;
+
+    border-radius: 0 0 30px 30px;
+    border: 4px solid $primary-color-lighter;
+    border-top: none;
 
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 
-    width: 100%;
+    width: 90%;
     height: $header-height;
 
-    background-color: #f0f4f4;
-    box-shadow: 1px 5px 10px $accent-color;
+    background-color: $primary-color;
 }
 
 .header {
@@ -23,7 +28,7 @@
 
     height: 100%;
 
-    margin-inline: 15px;
+    margin-inline: 135px;
 }
 
 .header-main {
@@ -57,13 +62,4 @@
 .header-menu {
     width: 25px;
     height: 20px;
-}
-
-// .header-search {
-//     height: 100%;
-// }
-
-.header-search .input__container {
-    height: 20px;
-    // margin-bottom: 10px;
 }

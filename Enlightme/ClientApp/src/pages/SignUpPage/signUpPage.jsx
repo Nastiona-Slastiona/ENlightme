@@ -8,24 +8,29 @@ import PagesMenu from "features/common/components/PagesMenu/pagesMenu";
 import requestHelper from "src/helpers/requestHelper";
 import serviceUrls from "src/constants/serviceUrls";
 import routes from "src/constants/routes";
+import defaultImg from "src/static/images/defaultImage.png"
 
 import './signUpPage.scss';
+
+const defaultImage = {
+    imageSrc: defaultImg,
+    imageFile: null
+};
 
 export default function SignUpPage() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [username, setUsername] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(defaultImage);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
+    const [birthDate, setBirthDate] = useState('');
     const [register, setRegister] = useState(false);
     const [warning, setWarning] = useState({
         email: [],
         password: [],
         username: [],
-        date_of_birth: [],
+        birthDate: [],
     });
 
     const onFirstNameChange = useCallback(e => {
@@ -36,24 +41,35 @@ export default function SignUpPage() {
         setLastName(e.target.value);
     }, []);
 
-    const onUsernameChange = useCallback(e => {
-        setWarning({...warning, username: []})
-        setUsername(e.target.value);
-    }, []);
-
     const onEmailChange = useCallback(e => {
         setWarning({...warning, email: []})
         setEmail(e.target.value);
     }, []);
 
     const onImageChange = useCallback(e => {
-        setImage(e.target.files[0]);
+        if (e.target.files && e.target.files[0])
+        {
+            let imageFile = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = x => {
+                setImage({
+                    imageFile,
+                    imageSrc: x.target.result,
+                })
+            }
+            reader.readAsDataURL(imageFile);
+        }
+        else {
+            setImage({
+                imageFile: null,
+                imageSrc: defaultImg
+            })
+        }
     }, []);
 
     const onDateChange = useCallback(e => {
-        console.log(warning)
-        setWarning({...warning, date_of_birth: []})
-        setDateOfBirth(e.target.value);
+        setWarning({...warning, birthDate: []})
+        setBirthDate(e.target.value);
     }, []);
 
     const onPasswordChange = useCallback(e => {
@@ -75,69 +91,76 @@ export default function SignUpPage() {
     const onFormSubmit = useCallback(async e => {
         e.preventDefault();
         if (repeatPassword === password) {
-            const userData = {
-                first_name: firstName, last_name: lastName, username,
-                email, password, password2: repeatPassword,
-                photo: image, date_of_birth: dateOfBirth,
+            setWarning('');
+            const userImage = image.imageFile;
+            const user = {
+                firstName,
+                lastName,
+                password,
+                email,
+                image: userImage,
+                birthDate
             };
 
             const formData = new FormData();
-            Object.keys(userData).forEach(key => formData.append(key, userData[key]))
+            for (const key in user) {
+                formData.append(key, user[key]);
+            }
 
-            await requestHelper.get(serviceUrls.signUp, {
+            const response = await requestHelper.get(serviceUrls.registration, {
                 method: 'POST',
                 body: formData
-            }).then(
-            (result) => {
+            });
+
+            if (response) {
                 setRegister(true);
-                return result;
-            },
-            (error) => {
-                setWarning({...warning, ...JSON.parse(error.message)});
-              })
+            }
         } else {
             setWarning(
                 {...warning, password: ['Passwords differ one from another']}
             );
         }
-    }, [dateOfBirth, repeatPassword, email, image, lastName, password]);
+    }, [birthDate, repeatPassword, email, image, lastName, password]);
 
     if (register) {
         return <Navigate to={routes.LOG_IN} />;
     }
 
     return (
-        <BasePage>
-            <PagesMenu />
-            <PageName title={'Sign Up'} />
-            <section className="sign-up-page__section">
-                <form className="sign-up-page__form" onSubmit={onFormSubmit}>
-                    <div className="sign-up-page__form-fields">
-                        <div className="sign-up-page__form-column">
-                            <Input type={'text'} placeholder={'first name'} onChange={onFirstNameChange} />
-                            <Input type={'text'} placeholder={'username'} onChange={onUsernameChange} />
-                            <p className="" style={{width: 200}}>{warning.username}</p>
-                            <Input type={'date'} placeholder={'birth day'} lang={'en-UK'} onChange={onDateChange} />
-                            <p className="" style={{width: 200}}>{warning.date_of_birth}</p>
-                            <Input type={'password'} placeholder={'password'} onChange={onPasswordChange} />
-                        </div>
-                        <div className="sign-up-page__form-column">
-                            <Input type={'text'} placeholder={'last name'} onChange={onLastNameChange} />
-                            <Input type={'email'} placeholder={'email'} onChange={onEmailChange} />
-                            <p className="" style={{width: 200}}>{warning.email}</p>
-                            <div className="sign-up-page__photo">
-                                <input id="sign-up-photo" type={'file'} className="sign-up-page__photo-input" onChange={onImageChange} />
-                                <label htmlFor="sign-up-photo">choose photo</label>
+        <div className="page-container">
+            <BasePage>
+                <PageName title={'Sign Up'} />
+                <section className="sign-up-page__section">
+                    <form className="sign-up-page__form" onSubmit={onFormSubmit}>
+                        <div className="sign-up-page__form-fields">
+                            <div className="sign-up-page__form-column">
+                                <Input type={'text'} placeholder={'first name'} onChange={onFirstNameChange} withBorder />
+                                <p className="" style={{width: 200}}>{warning.username}</p>
+                                <Input type={'date'} placeholder={'birth day'} lang={'en-UK'} onChange={onDateChange}  withBorder />
+                                <p className="" style={{width: 200}}>{warning.birthDate}</p>
+                                <Input type={'password'} placeholder={'password'} onChange={onPasswordChange} withBorder />
+                                <Input type={'password'} placeholder={'repeat password'} onChange={onRepeatPasswordChange} withBorder />
                             </div>
-                            <Input type={'password'} placeholder={'repeat password'} onChange={onRepeatPasswordChange} />
+                            <div className="sign-up-page__form-column">
+                                <Input type={'text'} placeholder={'last name'} onChange={onLastNameChange} withBorder />
+                                <Input type={'email'} placeholder={'email'} onChange={onEmailChange} withBorder />
+                                <p className="" style={{width: 200}}>{warning.email}</p>
+                                <div className="sign-up-page__photo-container">
+                                    <img src={image.imageSrc} className="sign-up-page__photo"/>
+                                </div>
+                                <div className="sign-up-page__photo-input">
+                                    <input id="sign-up-photo" type={'file'} onChange={onImageChange} />
+                                    <label htmlFor="sign-up-photo">choose photo</label>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <p className="" style={{width: 400}}>{warning.password}</p>
-                    <div className="sign-up-page__button-container">
-                        <button type="submit" className="sign-up-page__button">Sign up</button>
-                    </div>
-                </form>
-            </section>
-        </BasePage>
+                        <p className="" style={{width: 400}}>{warning.password}</p>
+                        <div className="sign-up-page__button-container">
+                            <button type="submit" className="sign-up-page__button">Sign up</button>
+                        </div>
+                    </form>
+                </section>
+            </BasePage>
+        </div>
     )
 }

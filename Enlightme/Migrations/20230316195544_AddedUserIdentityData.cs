@@ -2,39 +2,38 @@
 
 #nullable disable
 
-namespace Enlightme.Migrations
+namespace Enlightme.Migrations;
+
+/// <inheritdoc />
+public partial class AddedUserIdentityData : Migration
 {
     /// <inheritdoc />
-    public partial class AddedUserIdentityData : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<bool>(
-                name: "IsSuperUser",
-                table: "Users",
-                type: "boolean",
-                nullable: false,
-                defaultValue: false);
+        migrationBuilder.AddColumn<bool>(
+            name: "IsSuperUser",
+            table: "Users",
+            type: "boolean",
+            nullable: false,
+            defaultValue: false);
 
-            migrationBuilder.AddColumn<string>(
-                name: "Password",
-                table: "Users",
-                type: "text",
-                nullable: false,
-                defaultValue: "");
-        }
+        migrationBuilder.AddColumn<string>(
+            name: "Password",
+            table: "Users",
+            type: "text",
+            nullable: false,
+            defaultValue: "");
+    }
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "IsSuperUser",
-                table: "Users");
+    /// <inheritdoc />
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropColumn(
+            name: "IsSuperUser",
+            table: "Users");
 
-            migrationBuilder.DropColumn(
-                name: "Password",
-                table: "Users");
-        }
+        migrationBuilder.DropColumn(
+            name: "Password",
+            table: "Users");
     }
 }
