@@ -12,6 +12,8 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o => 
 {
     AuthenticationConfiguration authenticationConfiguration = new AuthenticationConfiguration();
@@ -41,6 +43,7 @@ builder.Services.AddScoped<Repository<DataContext, User>>();
 builder.Services.AddScoped<Repository<DataContext, RefreshToken>>();
 builder.Services.AddScoped<JwtHelper>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<AuthenticationConfiguration>();
 
 var app = builder.Build();

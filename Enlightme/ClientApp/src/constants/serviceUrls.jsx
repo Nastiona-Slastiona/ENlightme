@@ -1,6 +1,6 @@
 const serviceUrls = {
-    getUser: 'http://localhost:8000/auth/user/',
-    getUserPhoto: 'http://localhost:8000/api/user/photo/',
+    getUser: 'http://localhost:8000/api/user/',
+    getUserImage: 'http://localhost:8000/api/image/',
     getUserSettings: 'http://localhost:8000/api/settings/',
     updateUserSettings: 'http://localhost:8000/api/settings/',
     getUserBookId: 'http://localhost:8000/api/books/:id/user_book_id/',

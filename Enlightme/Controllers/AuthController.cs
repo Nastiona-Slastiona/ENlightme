@@ -21,20 +21,17 @@ public class AuthController : Controller
     private readonly Repository<DataContext, RefreshToken> refreshTokenRepository;
     private readonly JwtHelper jwtHelper;
     private readonly AuthService authService;
-    private readonly IWebHostEnvironment hostEnvironment;
 
     public AuthController(
         Repository<DataContext, User> userRepository,
         Repository<DataContext, RefreshToken> refreshTokenRepository,
         JwtHelper jwtHelper,
-        AuthService authService,
-        IWebHostEnvironment hostEnvironment)
+        AuthService authService)
     {
         this.refreshTokenRepository = refreshTokenRepository;
         this.userRepository = userRepository;
         this.jwtHelper = jwtHelper;
         this.authService = authService;
-        this.hostEnvironment = hostEnvironment;
     }
 
     [Route("register")]
@@ -120,22 +117,5 @@ public class AuthController : Controller
         await refreshTokenRepository.Delete(BaseSpecification<RefreshToken>.ByUserId(userId));
 
         return Ok(new SuccessResponse("Success"));
-    }
-
-    [HttpGet("user")]
-    public async Task<IActionResult> User()
-    {
-        try
-        {
-            var jwt = Request.Cookies["access"];
-
-            var user = await authService.GetUser(jwt);
-
-            return Ok(user);
-        }
-        catch (Exception _)
-        {
-            return Unauthorized();
-        }
     }
 }

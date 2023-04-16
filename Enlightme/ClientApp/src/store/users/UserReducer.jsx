@@ -5,6 +5,7 @@ const initialState = {
     isAuth: false,
     username: '',
     status: '',
+    userImage: '',
     cards: [],
     notes: [],
     books: [],
@@ -20,6 +21,7 @@ const usersSlice = createSlice({
                 ...state,
                 isAuth: action.payload.isAuth,
                 username: action.payload.username,
+                userImage: action.payload.userImage
             };
         }
     },

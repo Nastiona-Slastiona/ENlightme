@@ -1,145 +1,192 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 
-import AuthPage from 'pages/LoginPage/loginPage';
 import BasePage from 'src/components/base/BasePage/basePage';
 import PageName from 'src/features/common/components/PageName/pageName';
 import Input from 'components/base/Input/input';
-import PagesMenu from 'features/common/components/PagesMenu/pagesMenu';
+import defaultUser from 'src/static/images/defaultImage';
 
-import urlHelper from "src/helpers/urlHelper";
+import routes from "src/constants/routes";
 import serviceUrls from "src/constants/serviceUrls";
 import requestHelper from "src/helpers/requestHelper";
-
-import photo from 'src/static/images/kit_ava.png';
 
 import './userAccountPage.scss';
 
 const UserAccount = () => {
     const isAuth = useSelector(state => state.users.isAuth);
     const [user, setUser] = useState();
-    const [fullName, setFullName] = useState('');
-    const [username, setUsername] = useState('');
-    const [image, setImage] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [birthDate, setBirthDate] = useState('');
+    const [userImage, setImage] = useState({ imageFile: null, imageSrc: defaultUser });
     const [notifications, setNotifications] = useState(false);
     const [validation, setValidation] = useState('');
 
-    const onFullNameChange = useCallback(e => {
-        setFullName(e.target.value);
-    }, [setFullName]);
+    const onFirstNameChange = useCallback(e => {
+        if (e.target.value === '') {
+            setValidation('Username should have some value!');
+        } else {
+            setFirstName(e.target.value);
+        }
+    }, [setFirstName]);
 
     const onNotificationsChange = useCallback(() => {
         setNotifications(prevState => !prevState);
     }, [setNotifications]);
 
-    const onUsernameChange = useCallback(e => {
+    const onLastNameChange = useCallback(e => {
         if (e.target.value === '') {
             setValidation('Username should have some value!');
         } else {
-            setUsername(e.target.value);
+            setLastName(e.target.value);
             setValidation('');
         }
-    }, [setValidation, setUsername]);
+    }, [setValidation, setLastName]);
+
+    const onDateChange = useCallback(e => {
+        setBirthDate(e.target.value);
+    }, []);
 
     const onImageChange = useCallback(e => {
-        setImage(e.target.files[0]);
+        if (e.target.files && e.target.files[0])
+        {
+            let imageFile = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = x => {
+                setImage({
+                    imageFile,
+                    imageSrc: x.target.result,
+                })
+            }
+            reader.readAsDataURL(imageFile);
+        }
+        else {
+            setImage({
+                imageFile: null,
+                imageSrc: defaultUser
+            })
+        }
     }, [setImage]);
 
-    // useEffect(() => {
-    //     async function fetchUser() {
-    //         const response = await requestHelper.get(serviceUrls.getUserSettings, { method: 'GET', headers: {} }, true);
+    
+    useEffect(() => {
+        async function fetchUser() {
+            const response = await requestHelper.get(serviceUrls.getUserSettings, { 
+                method: 'GET',
+                headers: {
+                            'Content-Type': 'application/json',
+                        },
+                credentials: 'include'},
+            isAuth, true);
 
-    //         if (response) {
-    //             setUser(response);
-    //             setFullName(response.first_name + ' ' + response.last_name);
-    //             setImage(response.photo);
-    //             setUsername(response.username);
-    //             setNotifications(response.send_notifications);
-    //         }
-    //     }
+            if (response) {
+                console.log(response);
+                setUser(response)
+                setFirstName(response.firstName);
+                if (response.image) {
+                    setImage({
+                        imageFile: null,
+                        imageSrc: `data:image/jpeg;base64,${response.image}`
+                    });
+                }
+                setBirthDate(response.birthDate);
+                setLastName(response.lastName);
+                setNotifications(response.shouldSendNotifications);
+            }
+        }
 
-    //     if (!user) {
-    //         fetchUser();
-    //     }
-
-    // }, [setUser]);
+        if (!firstName) {
+            fetchUser();
+        }
+    }, [setFirstName, setLastName, setImage, setNotifications, setUser, isAuth]);
 
     const onFormSubmit = useCallback(async (e) => {
-        if (username !== user.username || fullName !== user.first_name + ' ' + user.last_name || image !== user.photo || notifications !== user.send_notifications) {            
-            if (validation === '') {
-                const userData = {
-                    first_name: fullName.split('')[0], last_name: fullName.split('')[2], username: username,
-                photo: image, send_notifications: notifications
+        e.preventDefault();
+        if (lastName !== user.lastName || firstName !== user.firstName || userImage !== user.image || notifications !== user.shouldSendNotifications) {            
+            const image = userImage.imageFile ? userImage.imageFile : null;
+            const userId = user.id;
+            const userData = {
+                userId,
+                firstName,
+                lastName,
+                shouldSendNotifications: notifications,
+                birthDate,
+                image
             };
-
+                
             const formData = new FormData();
-            Object.keys(userData).forEach(key => formData.append(key, userData[key]))
+            for (const key in userData) {
+                formData.append(key, userData[key]);
+            };
+                        
+            console.log(userData);
             
             const response = await requestHelper.get(
                 serviceUrls.updateUserSettings,
                 {
-                    method: 'PUT',
-                    headers: {},
+                    method: 'POST',
                     body: formData
-                }, true);
-            }
+                });
         }
         else {
             e.preventDefault();
         }
-    }, [fullName, username, image, notifications]);
+    }, [firstName, lastName, userImage, notifications]);
 
-    if (!user) {
-        return;
+    if (!isAuth) {
+        return <BasePage />   
     }
-
+        
     return (
-        <BasePage>
-            <PageName title={'My account'} />
-            <section className='user-account__container'>
-                <form className='user-account__form' id='form' onSubmit={onFormSubmit}>
-                    <div className='user-account__form-fields'>
-                        <div className='user-account__image-form-field'>
-                            <div className='user-account__image-container'><img src={image} className='user-account__image' /></div>
-                            <div className='user-account__image-input'>
-                                <input type={'file'} id='file-upload' name='photo' onChange={onImageChange} />
-                                <label htmlFor='file-upload' >upload new photo</label>
+        <div className="user-account__page-container">
+            <BasePage>
+                <PageName title={'My account'} />
+                <section className='user-account__container'>
+                    <form className='user-account__form' id='form' onSubmit={onFormSubmit}>
+                        <div className='user-account__form-fields'>
+                            <div className='user-account__image-form-field'>
+                                <div className='user-account__image-container'><img src={userImage.imageSrc} className='user-account__image' /></div>
+                                <div className='user-account__image-input'>
+                                    <input type={'file'} id='file-upload' name='photo' onChange={onImageChange} />
+                                    <label htmlFor='file-upload'>upload new photo</label>
+                                </div>
                             </div>
-                        </div>
-                        <div className='user-account-form__info-fields'>
-                            <div className='user-account-form__info-field-column'>
-                                <Input
-                                    type={'text'}
-                                    value={fullName}
-                                    label={'Full Name'}
-                                    name='fullname'
-                                    placeholder={'Enter full name...'}
-                                    onChange={onFullNameChange}
-                                />
-                                <Input
-                                    type={'text'}
-                                    value={username}
-                                    label={'Display Name'}
-                                    name='username'
-                                    placeholder={'Enter display name...'}
-                                    onChange={onUsernameChange}
-                                />
-                                {
-                                    validation !== '' && (<span>{validation}</span>)
-                                }
-                                <select id='languages' className='select-language' name='language' disabled>
-                                    <option value={'english'} className='select-language__option'>English</option>
-                                    <option value={'russion'}>Русский</option>
-                                </select>
-                            </div>
-                            <div className='user-account-form__info-field-column'>
-                                <div>
+                            <div className='user-account-form__info-fields'>
+                                <div className='user-account-form__info-field-column'>
+                                    <Input
+                                        type={'text'}
+                                        value={firstName}
+                                        label={'First Name'}
+                                        name='firstname'
+                                        placeholder={'Enter first name...'}
+                                        onChange={onFirstNameChange}
+                                        withBorder
+                                    />
+                                    <Input
+                                        type={'text'}
+                                        value={lastName}
+                                        label={'Last Name'}
+                                        name='lastname'
+                                        placeholder={'Enter last name...'}
+                                        onChange={onLastNameChange}
+                                        withBorder
+                                    />
+                                    {
+                                        validation !== '' && (<span>{validation}</span>)
+                                    }
+                                    <select id='languages' className='select-language' name='language' disabled>
+                                        <option value={'english'} className='select-language__option'>English</option>
+                                        <option value={'russion'}>Русский</option>
+                                    </select>
+                                </div>
+                                <div className='user-account-form__info-field-column'>
+                                    {/* <Input type={'date'} placeholder={'birth day'} lang={'en-UK'} onChange={onDateChange}  withBorder /> */}
                                     <input
                                         type={'checkbox'}
                                         className='checkbox-input'
                                         id='checkbox'
                                         name='checkbox'
-                                        defaultChecked={notifications}
+                                        checked={notifications}
                                         onChange={onNotificationsChange}
                                     />
                                     <label htmlFor='checkbox' className='checkbox-label'>
@@ -149,13 +196,13 @@ const UserAccount = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className='submit-button__container'>
-                        <input type='submit' value={'save changes'} className='submit-button' />
-                    </div>
-                </form>
-            </section>
-        </BasePage>
+                        <div className='submit-button__container'>
+                            <input type='submit' value={'save changes'} className='submit-button' />
+                        </div>
+                    </form>
+                </section>
+            </BasePage>
+        </div>
     )
 }
 

@@ -26,6 +26,14 @@ namespace Enlightme.Repositories
             return entity;
         }
 
+        public async Task Update(TEntity newEntity)
+        {
+            TEntity oldentity = await GetFirstOrDefault<TEntity>(new Specification<TEntity>(e => e.Id == newEntity.Id));
+            oldentity = newEntity;
+
+            await dataContext.SaveChangesAsync();
+        }
+
         public async Task Delete(TEntity entity)
         {
             dataContext.Remove(entity);

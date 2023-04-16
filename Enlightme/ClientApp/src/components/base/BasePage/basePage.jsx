@@ -13,7 +13,6 @@ export default function BasePage({ children, isLoginPage = false, needAccess = f
     const dispatch = useDispatch();
     const isAuth = JSON.parse(localStorage.getItem('isAuth'));
     const userName = useSelector(state => state.users.username);
-    const [image, setImage] = useState();
 
     useEffect(() => {
         (
@@ -26,10 +25,9 @@ export default function BasePage({ children, isLoginPage = false, needAccess = f
                             'Content-Type': 'application/json',
                         },
                         credentials: 'include'
-                    }, isAuth);
-
+                    }, isAuth, true);
+                    
                     if (user) {
-                        setImage(user.image)
                         dispatch({
                             type: 'users/setUserData',
                             payload: {
@@ -39,6 +37,7 @@ export default function BasePage({ children, isLoginPage = false, needAccess = f
                         });
                     }
                 }
+
             }
         )();
 
@@ -50,7 +49,7 @@ export default function BasePage({ children, isLoginPage = false, needAccess = f
 
     return (
         <div className='base-page'>
-            <Header name={userName} image={image} />
+            <Header name={userName} />
             <div className='base-page__content'>
                 {children}
             </div>

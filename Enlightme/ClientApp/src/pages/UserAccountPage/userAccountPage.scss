@@ -10,6 +10,14 @@
     height: 100%;
 }
 
+.user-account__page-container {
+    .base-page {
+        background-image: url('account_background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
 .user-account__form {
     display: block;
 
@@ -20,8 +28,7 @@
     padding: 50px 60px;
 
     border-radius: 50px;
-    background-color: $secondary-color;
-    box-shadow: 3px 3px 9px $primary-color;
+    background-color: $primary-color--less-opacity;
 }
 
 .user-account__form-fields {
@@ -74,6 +81,7 @@
 .user-account-form__info-field-column {
     display: flex;
     flex-direction: column;
+    justify-content: end;
 
     margin: 0 30px;
 }

@@ -19,8 +19,11 @@ public class User: IHasId
     [StringLength(200)]
     public string Email { get; set; }
 
+    public DateTime BirthDate { get; set; }
+
     public string Password { get; set; }
     public bool IsSuperUser { get; set; }
+    public bool ShouldSendNotifications { get; set; }
 
     public byte[] Image { get; set; }
 }

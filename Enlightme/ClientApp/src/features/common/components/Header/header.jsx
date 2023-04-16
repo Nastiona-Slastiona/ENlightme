@@ -12,7 +12,7 @@ import add_user from "src/static/images/add-user.png";
 
 import './header.scss';
 
-const Header = ({ name, image }) => {
+const Header = ({ name }) => {
     const [isMenuActive, setIsMenuActive] = useState(false);
 
     const onMenuClick = useCallback(() => {
@@ -33,7 +33,6 @@ const Header = ({ name, image }) => {
                     <UserMenu 
                         isActive={isMenuActive}
                         name={name}
-                        image={image}
                         setIsActive={setIsMenuActive} 
                     />
                 )
