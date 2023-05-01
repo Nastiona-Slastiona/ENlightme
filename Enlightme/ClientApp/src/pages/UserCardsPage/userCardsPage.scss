@@ -130,7 +130,7 @@
     border-radius: 15px;
     background-color: $accent-color;
 
-    @include typography-primary;
+    @include typography-primary-bold;
 
     &:hover {
         background-color: darken($color: $accent-color, $amount: 10);

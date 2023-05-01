@@ -7,16 +7,17 @@
     width: 100%;
     min-height: 100vh;
 
-    background-color: $primary-color;
+    background-image: url('background2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
-    display: block;
     margin: auto auto;
-    padding-top: 15px;
 }
 
 .base-page__content {
     display: block;
     margin: 0 auto;
-    position: relative;
-    top: $header-height;
+    padding: 70px;
+    height: fit-content;
+    // overflow: scroll;
 }

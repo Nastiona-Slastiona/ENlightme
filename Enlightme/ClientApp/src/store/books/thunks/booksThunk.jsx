@@ -20,7 +20,7 @@ import urlHelper from 'src/helpers/urlHelper';
     }
 );
 
- const fetchUserBooks = createAsyncThunk(
+const fetchUserBooks = createAsyncThunk(
     'books/FetchUserBooks',
     async (input, { rejectWithValue }) => {
         try {
@@ -28,7 +28,7 @@ import urlHelper from 'src/helpers/urlHelper';
                 serviceUrls.getUserBooks,
             );
             const data = await requestHelper.get(
-                url, {method: 'GET', headers: {}}, true
+                url, {method: 'GET', headers: {}}, true, true
             );
 
             return [data, input];

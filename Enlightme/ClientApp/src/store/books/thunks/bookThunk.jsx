@@ -2,8 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import requestHelper from 'src/helpers/requestHelper';
 import serviceUrls from 'src/constants/serviceUrls';
 import urlHelper from 'src/helpers/urlHelper';
-import { useSelector } from "react-redux";
-
 
 const fetchBook = createAsyncThunk(
     'books/fetchBook',

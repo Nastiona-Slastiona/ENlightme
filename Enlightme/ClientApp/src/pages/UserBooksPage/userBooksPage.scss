@@ -1,34 +1,34 @@
 @import 'src/styles/colors';
 @import 'src/styles/typography';
 
-.user-book-page-logo__container {
-    display: flex;
-    justify-content: space-between;
 
-    width: 90%;
+.user-book-page__add-button {
+    display: flex;
+    justify-content: end;
+    margin: 0 100px;
 }
 
-.user-book-page__input-book-form {
-    margin-top: 30px;
-
+.user-book-page__input-book-label{
     width: 120px;
     height: 70px;
+    margin-top: 30px;
 
-    background-color: $secondary-color;
     border-radius: 15px;
+    background-color: $secondary-color;
 
     &::before {
-        content: 'add book';
+        @include typography-primary-bold;
         position: relative;
         top: 30%;
         left: 10%;
 
-        @include typography-primary;
+        content: 'add book';
     }
 }
 
 .user-book-page__input-book {
-    opacity: 0;
     width: 100%;
     height: 100%;
+
+    opacity: 0;
 }

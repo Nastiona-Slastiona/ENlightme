@@ -10,7 +10,7 @@ import requestHelper from "src/helpers/requestHelper";
 import routes from "src/constants/routes";
 import { fetchUserBookId } from "src/store/books/thunks/bookThunk";
 
-import bookCover from 'src/static/images/book-closed.jpg';
+import bookCover from 'src/static/images/cover.png';
 
 import './bookInfoPage.scss';
 
@@ -25,11 +25,12 @@ export default function BookInfoPage() {
 
     useEffect(() => {
         if (bookId) {
-            dispatch(fetchUserBookId({id: bookId, isAuth}));
+            // dispatch(fetchUserBookId({id: bookId, isAuth}));
             dispatch(async () => {
                 const url = urlHelper.getUrlByTemplate(
-                    serviceUrls.getBookInfo, {id: bookId}
+                    serviceUrls.getUserBookId, {id: bookId}
                 );
+
                 const data = await requestHelper.get(
                     url, {
                         method: 'GET',
@@ -38,10 +39,13 @@ export default function BookInfoPage() {
                         }
                     }, isAuth
                 );
-                setBook(data);
+
+                if (data) {
+                    setBook(data);
+                };
             })
         }
-    }, [bookId, dispatch, isAuth]);
+    }, [bookId, dispatch, isAuth, setBook]);
 
     const formHandler = useCallback(async (e) => {
         e.preventDefault();
@@ -50,7 +54,7 @@ export default function BookInfoPage() {
             window.location.replace(routes.LOG_IN);
         }
         
-        const url = urlHelper.getUrlByTemplate(serviceUrls.paymentCheckout, { id: bookId });
+        // const url = urlHelper.getUrlByTemplate(serviceUrls.paymentCheckout, { id: bookId });
         const data = await requestHelper.get(
             url, {
                 method: 'POST',
@@ -72,7 +76,7 @@ export default function BookInfoPage() {
     return (
         <BasePage>
             {
-                book && userBookId && (<>
+                book && (<>
                     <PageName title={book.title} />
                     <div className="book-info-page__author-container">
                         <h2 className="book-info-page__author">{
@@ -87,24 +91,9 @@ export default function BookInfoPage() {
                                 <img className="book-info-page__book-cover" src={book.cover ?? bookCover} alt='cover' />
                             </div>
                             {
-                                !userBookId.id && (
+                                book.id && (
                                     <div className="book-info-page__price-info">
-                                        <span className="book-info-page__price">{book.price} $</span>
-                                        <form onSubmit={formHandler} method='POST' >
-                                            <button className="book-info-page__button" type='submit'>
-                                                buy
-                                            </button>
-                                        </form>
-                                    </div>
-                                )
-                            }
-                            {
-                                userBookId.id && (
-                                    <div className="book-info-page__price-info">
-                                        <Link className="book-info-page__link" to={urlHelper.getUrlByTemplate(routes.USER_BOOK_NOTES, { id: userBookId.id })}>
-                                            <button className="book-info-page__button">notes</button>
-                                        </Link>
-                                        <Link className="book-info-page__link" to={urlHelper.getUrlByTemplate(routes.USER_BOOK_CARDS, { id: userBookId.id })}>
+                                        <Link className="book-info-page__link" to={urlHelper.getUrlByTemplate(routes.USER_BOOK_CARDS, { id: book.id })}>
                                             <button className="book-info-page__button">cards</button>
                                         </Link>
                                     </div>
@@ -113,26 +102,35 @@ export default function BookInfoPage() {
                             <div></div>
                         </div>
                         <div className="book-info-page__book-text-info">
-                            {
-                                (book.genres || book.publication_date || book.language) && (
-                                    <div className="book-info-page__book-main-info-container">
+                            <div className="book-info-page__book-main-info-container">
+                                {
+                                    book.genre && 
                                         <span className="book-info-page__book-main-info">
-                                            genres: {book.genres}<br />
-                                            publication date: {book.publication_date}<br />
-                                            language: {book.language}<br />
+                                            Genres: {book.genre.type}<br />
                                         </span>
-                                    </div>
-                                )
-                            }
+                                }
+                                {
+                                    book.language && 
+                                        <span className="book-info-page__book-main-info">
+                                            Language: {book.language}<br />
+                                        </span>
+                                }
+                                {
+                                    book.publicationDate && 
+                                        <span className="book-info-page__book-main-info">
+                                            Publication date: {book.publication_date}
+                                        </span>
+                                }
+                            </div>
                             <div className="book-info-page__book-description-container">
                                 <span className="book-info-page__book-description">{book.description ? book.description : 'There is no description.'}</span>
                             </div>
                         </div>
                     </section>
                     {
-                        userBookId.id && (
+                        book.id && (
                             <div className="book-info-page__read-button">
-                                <Link className="book-info-page__read-button" to={urlHelper.getUrlByTemplate(routes.READ_BOOK, { id: bookId })}>
+                                <Link className="book-info-page__read-button" to={urlHelper.getUrlByTemplate(routes.READ_BOOK, { id: book.id })}>
                                     <button className="book-info-page__button">read</button>
                                 </Link>
                             </div>

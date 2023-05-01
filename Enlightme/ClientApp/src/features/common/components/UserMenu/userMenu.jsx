@@ -1,9 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import requestHelper from 'src/helpers/requestHelper';
 import serviceUrls from 'src/constants/serviceUrls';
-
 import routes from "src/constants/routes";
+
+import Notifications from "../Notifications/notifications";
 
 import logout from 'src/static/images/logout';
 import book from 'src/static/images/open-book';
@@ -15,7 +18,6 @@ import sign_in from 'src/static/images/sign-in';
 import defaultUser from 'src/static/images/defaultImage';
 
 import './userMenu.scss';
-import { useDispatch, useSelector } from "react-redux";
 
 export default function UserMenu({
     isActive,
@@ -25,6 +27,7 @@ export default function UserMenu({
     const dispatch = useDispatch();
     const isAuth = useSelector(state => state.users.isAuth);
     const [image, setImage] = useState(defaultUser);
+    const notifications = useSelector(state => state.users.notifications);
 
     useEffect(() => {
         async function fetchUserImage() {
@@ -107,21 +110,17 @@ export default function UserMenu({
                                                 </Link>
                                             </li>
                                             <li className='user-account-info__menu-item'>
-                                                <img src={puzzle} className='user-account-info__menu-item-icon' />
+                                                {   
+                                                    notifications 
+                                                        ? <Notifications notifications={notifications} icon={puzzle} />
+                                                        : <img src={puzzle} className='user-account-info__menu-item-icon' />
+                                                }
                                                 <Link
                                                     to={routes.USER_CARDS}
                                                     className='user-account-info__menu-item-text'
                                                 >
                                                     cards
-                                                </Link>
-                                            </li>
-                                            <li className='user-account-info__menu-item'>
-                                                <img src={bell} className='user-account-info__menu-item-icon' />
-                                                <Link
-                                                    to={routes.USER_NOTIFICATIONS}
-                                                    className='user-account-info__menu-item-text'
-                                                >
-                                                    notifications
+                                                    
                                                 </Link>
                                             </li>
                                         </ul>

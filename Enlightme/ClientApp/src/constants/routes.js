@@ -15,7 +15,7 @@ const USER_NOTIFICATIONS = '/user/notifications';
 const USER_BOOK_CARDS = '/book/:id/cards';
 const USER_BOOK_NOTES = '/book/:id/notes';
 
-const READ_BOOK = '/book-read/:id';
+const READ_BOOK = '/book/:id/read';
 
 export default {
     HOME,

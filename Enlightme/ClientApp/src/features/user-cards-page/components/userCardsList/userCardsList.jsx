@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 
 import requestHelper from 'src/helpers/requestHelper';
 import serviceUrls from 'src/constants/serviceUrls';
@@ -10,7 +10,7 @@ import './userCardsList.scss';
 
 
 export default function UserCardsList({ cards }) {
-
+    console.log(cards);
     const onButtonClick = useCallback(async (e) => {
         const card = Array.from(cards).find(c => c.id === +e.target.id);
 
@@ -23,16 +23,16 @@ export default function UserCardsList({ cards }) {
         window.location.reload();
     }, [cards]);
 
-    const userCards = cards.map((card, ind) => {
+    const userCards = useMemo(() => cards.map((card, ind) => {
         return (
-            <div className='user-card-item' key={card.id}>
-                <span className='card-item__value'>{card.word}</span>
+            <div className='user-card-item' key={ind}>
+                <span className='card-item__value'>{card.value}</span>
                 <button className='card-item__remove-button' onClick={onButtonClick}>
                     <img src={cross} id={card.id} />
                 </button>
             </div>
         )
-    });
+    }), [cards]);
 
     return (
         <div className='user-cards-list'>

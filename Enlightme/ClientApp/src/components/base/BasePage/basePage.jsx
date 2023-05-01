@@ -1,32 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import requestHelper from 'src/helpers/requestHelper';
+import serviceUrls from 'src/constants/serviceUrls';
 
 import Header from "src/features/common/components/Header/header";
 import Footer from "src/features/common/components/Footer/footer";
 
 import './basePage.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import requestHelper from 'src/helpers/requestHelper';
-import serviceUrls from 'src/constants/serviceUrls';
 
-export default function BasePage({ children, isLoginPage = false, needAccess = false }) {
+export default function BasePage({ children }) {
     const dispatch = useDispatch();
     const isAuth = JSON.parse(localStorage.getItem('isAuth'));
     const userName = useSelector(state => state.users.username);
+    const notifications = useSelector(state => state.users.notifications);
 
     useEffect(() => {
         (
             async () => {
-                if (!userName && isAuth) {
+                if (isAuth) {
                     const user = await requestHelper.get(
                         serviceUrls.getUser, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        credentials: 'include'
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            credentials: 'include'
                     }, isAuth, true);
-                    
+                        
                     if (user) {
                         dispatch({
                             type: 'users/setUserData',
@@ -38,13 +39,32 @@ export default function BasePage({ children, isLoginPage = false, needAccess = f
                     }
                 }
 
+                if (!notifications) {
+                    const notificationData = await requestHelper.get(
+                        serviceUrls.getNotifications, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        credentials: 'include'
+                    }, isAuth, true);
+    
+                    if (notificationData) {
+                        dispatch({
+                            type: 'users/setUserNotifications',
+                            payload: {
+                                notifications: notificationData
+                            }
+                        })
+                    }
+                }
             }
         )();
 
         // if (!isAuth && !isLoginPage) {
         //     window.location.replace(routes.LOG_IN);
         // }
-    }, [userName]);
+    }, []);
 
 
     return (

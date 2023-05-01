@@ -5,10 +5,10 @@ const initialState = {
     isAuth: false,
     username: '',
     status: '',
-    userImage: '',
+    notifications: undefined,
     cards: [],
     notes: [],
-    books: [],
+    books: []
 };
 
 
@@ -20,8 +20,13 @@ const usersSlice = createSlice({
             return {
                 ...state,
                 isAuth: action.payload.isAuth,
-                username: action.payload.username,
-                userImage: action.payload.userImage
+                username: action.payload.username
+            };
+        },
+        setUserNotifications(state, action) {
+            return {
+                ...state,
+                notifications: action.payload.notifications
             };
         }
     },

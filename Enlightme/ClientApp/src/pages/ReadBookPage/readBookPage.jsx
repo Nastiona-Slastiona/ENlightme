@@ -5,15 +5,15 @@ import { generateRequestUrl } from "google-translate-api-browser";
 import { useLocation } from 'react-router-dom';
 
 import BasePage from "src/components/base/BasePage/basePage";
-import Logo from "src/features/common/components/Logo/logo";
 
-import {fetchBook, fetchUserBookId} from "src/store/books/thunks/bookThunk";
 import requestHelper from 'src/helpers/requestHelper';
 import serviceUrls from 'src/constants/serviceUrls';
 import urlHelper from "src/helpers/urlHelper";
 import env from 'src/env';
 
 import './readBookPage.scss';
+import fileHelper from "../../helpers/fileHelper";
+
 
 const API_KEY = [env.TRANSLATE_API_KEY];
 const fromLang = 'en';
@@ -26,7 +26,7 @@ const ownStyles = {
     ...ReactReaderStyle,
     readerArea: {
         ...ReactReaderStyle.readerArea,
-        borderRadius: '15px'
+        borderRadius: '35px'
     },
     arrow: {
         ...ReactReaderStyle.arrow,
@@ -34,59 +34,65 @@ const ownStyles = {
     },
     tocArea: {
         ...ReactReaderStyle.tocArea,
-        top: '250px',
-        height: '40rem',
+        top: '0px',
+        height: '50rem',
         overflowY: 'scroll',
-        borderRadius: '15px 0 0 15px',
-        left: '100px'
+        borderRadius: '35px',
+        left: '10px'
     }
 }
 
 export default function ReadBookPage() {
     const dispatch = useDispatch();
+    const locationUrl = useLocation();
+    const bookId = +locationUrl.pathname.slice(6, 8) || +location.pathname.slice(6, 7);
+    const [book, setBook] = useState();
     const [selections, setSelections] = useState([]);
     const [translation, setTranslation] = useState('');
     const [word, setWord] = useState('');
-    const [note, setNote] = useState(false);
-
-    const [isAbleToAddNote, setIsAbleToSetNote] = useState(false);
-    const [isAbleToAddCard, setIsAbleToSetCard] = useState(false);
-
-    const book = useSelector(state => state.books.selectedBook);
-    const userBookId = useSelector(state => state.books.userBookId);
-    const renditionRef = useRef(null)
 
     const [location, setLocation] = useState(null);
     const locationChanged = epubcifi => {
         setLocation(epubcifi)
     }
-    const localUrl = useLocation();
-    const bookId = +localUrl.pathname.slice(11);
 
-    const onAddNoteClick = useCallback(async () => {
-        console.log(123134, userBookId)
-        console.log(book);
-        console.log(selections)
-        console.log(selections[0].text);
-        const response = await requestHelper.get(
-            urlHelper.getUrlByTemplate(serviceUrls.createNote, { id: userBookId.id }), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                note: selections[0].text
+    const [isAbleToAddCard, setIsAbleToSetCard] = useState(false);
+
+    const userBookId = useSelector(state => state.books.userBookId);
+    const renditionRef = useRef(null)
+
+    useEffect(() => {
+        if (bookId) {
+            dispatch(async () => {
+                const url = urlHelper.getUrlByTemplate(
+                    serviceUrls.getUserBookId, {id: bookId}
+                );
+
+                const data = await requestHelper.get(
+                    url, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    }, true
+                );
+
+                if (data) {
+                    setBook(data);
+                };
             })
-        }, true);
-
-        if (response) {
-            setNote(true);
-
-            setTimeout(() => {
-                setNote(false);
-            }, 3000);
         }
-    }, [setNote, selections]);
+    }, [bookId, dispatch, setBook]);
+
+    const setSelection = useCallback(rendition => {
+        renditionRef.current = rendition
+        renditionRef.current.themes.default({
+            '::selection': {
+                background: 'orange'
+            }
+        });
+        setSelections([])
+    }, [setSelections]);
 
     const onAddCardClick = useCallback(async () => {
         const currentUrl = Object.assign(url)
@@ -104,16 +110,17 @@ export default function ReadBookPage() {
         const { translatedText } = await data.translations[1];
 
         const response = await requestHelper.get(
-            urlHelper.getUrlByTemplate(serviceUrls.createCard, { id: userBookId.id }), {
+            serviceUrls.createCard, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                word: selections[0].text,
-                translation: translatedText
+                value: selections[0].text,
+                translation: translatedText,
+                bookId: book.id
             })
-        }, true);
+        }, true, true);
 
         if (response) {
             setTranslation(translatedText);
@@ -127,13 +134,6 @@ export default function ReadBookPage() {
     }, [selections, setTranslation]);
 
     useEffect(() => {
-        if (!book) {
-            dispatch(fetchBook({id: bookId, isAuth: true}));
-        }
-        if (!userBookId && bookId) {
-            dispatch(fetchUserBookId({id: bookId, isAuth: true}));
-        }
-
         if (renditionRef.current) {
             function setRenderSelection(cfiRange, contents) {
                 setSelections([
@@ -150,10 +150,12 @@ export default function ReadBookPage() {
                     null,
                     'hl',
                     { fill: 'orange', 'fill-opacity': '0.5', 'mix-blend-mode': 'multiply' }
-                )
-                contents.window.getSelection().removeAllRanges()
+                    )
+                    contents.window.getSelection().removeAllRanges()
             }
+
             renditionRef.current.on('selected', setRenderSelection)
+            
             return () => {
                 renditionRef.current.off('selected', setRenderSelection)
             }
@@ -164,15 +166,11 @@ export default function ReadBookPage() {
         return null;
     }
 
-    if (selections[0]?.text.trim().split(' ').length > 1 && !isAbleToAddNote) {
-        setIsAbleToSetNote(true);
-        setIsAbleToSetCard(false);
-    }
-
     if (selections[0]?.text.trim().split(' ').length === 1 && !isAbleToAddCard) {
         setIsAbleToSetCard(true);
-        setIsAbleToSetNote(false);
     }
+
+    const bookContent = fileHelper.createBlobFile(fileHelper.base64ToArrayBuffer(book.content));
 
     return (
         <BasePage needAccess={true}>
@@ -185,25 +183,9 @@ export default function ReadBookPage() {
                         </div>
                     )
                 }
-                {
-                    note && (
-                        <div className="read-book__data-added">
-                            <p>Note was added!</p>
-                        </div>
-                    )
-                }
-                {
-                    (isAbleToAddCard || isAbleToAddNote) && (
-                        <button className="read-book__add-text-button">
-                            {
-                                isAbleToAddNote && (<span className="read-book__add-text" onClick={onAddNoteClick}>Add Note</span>)
-                            }
-                            {
-                                isAbleToAddCard && (<span className="read-book__add-text" onClick={onAddCardClick}>Add Card</span>)
-                            }
-                        </button>
-                    )
-                }
+                <button className="read-book__add-text-button" disabled={!isAbleToAddCard} >
+                    <span className="read-book__add-text" onClick={onAddCardClick}>Add Card</span>
+                </button>
             </div>
             <section className='reader__container'>
                 <div className='reader'>
@@ -212,16 +194,8 @@ export default function ReadBookPage() {
                         location={location}
                         locationChanged={locationChanged}
                         readerStyles={ownStyles}
-                        url={book.url}
-                        getRendition={rendition => {
-                            renditionRef.current = rendition
-                            renditionRef.current.themes.default({
-                                '::selection': {
-                                    background: 'orange'
-                                }
-                            })
-                            setSelections([])
-                        }}
+                        url={bookContent}
+                        getRendition={setSelection}
                     />
                 </div>
             </section>

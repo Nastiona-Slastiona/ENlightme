@@ -5,21 +5,21 @@
 .header-container {
     position: absolute;
     top: 0;
-    left: 5%;
     right: 5%;
-
-    border-radius: 0 0 30px 30px;
-    border: 4px solid $primary-color-lighter;
-    border-top: none;
+    left: 5%;
 
     display: flex;
     justify-content: space-between;
-    gap: 20px;
 
     width: 90%;
     height: $header-height;
 
+    border: 4px solid $primary-color-lighter;
+    border-top: none;
+    border-radius: 0 0 30px 30px;
     background-color: $primary-color;
+
+    gap: 20px;
 }
 
 .header {
@@ -40,7 +40,7 @@
 
     width: 100%;
 
-    @include typography-small;
+@include typography-small;
     gap: 50px;
 }
 
@@ -51,12 +51,20 @@
 
     height: 100%;
     margin: 0 20px;
-    transition: 0.3s;
+
+    transition: .3s;
 
     &--active {
+        z-index: 3;
+
         margin-left: 400px;
-        z-index: 2;
     }
+}
+
+.header__account {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .header-menu {

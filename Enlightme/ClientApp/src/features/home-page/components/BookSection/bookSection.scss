@@ -27,7 +27,7 @@
 
     width: 100%;
 
-    @include typography-header;
+@include typography-header;
 }
 
 .book-section-genre-filter__container {
@@ -35,7 +35,6 @@
     justify-content: center;
 
     width: 100%;
-    margin-top: 30px;
 
     gap: 50px;
 }
@@ -67,11 +66,22 @@
 .book-section__content {
     display: grid;
 
-    margin-top: 80px;
+    min-height: 300px;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 20px 80px;
+
+    border: 3px solid $secondary-color;
+    border-radius: 35px;
+    background-color: $secondary-color--less-opacity;
 
     overflow-wrap: normal;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 100px;
+}
+
+.book-section__no-content {
+    @include typography-primary-bold;
 }
 
 .book-section__item-container {
@@ -89,7 +99,7 @@
     height: 280px;
 
     border-radius: 20px;
-    background-color: lighten($color: $primary-color, $amount: 30);
+    // background-color: lighten($color: $primary-color, $amount: 30);
 }
 
 .book-section__item-info {
@@ -101,18 +111,22 @@
 }
 
 .book-section__item-title {
+    max-width: 230px;
+
+    word-break: break-all;
+
     @include typography-primary-bold;
 }
 
 .book-section__item-price {
     font-weight: 600;
 
-    @include typography-small;
+@include typography-small;
 }
 
 .book-section__item-cover {
-    width: 70%;
-    height: 70%;
+    width: 80%;
+    height: 80%;
 
     border-radius: 15px;
 }
@@ -135,6 +149,9 @@
 }
 
 .book-section__item-button-container {
+    position: relative;
+    bottom: 180px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,8 +159,6 @@
     width: 100%;
     height: 100%;
 
-    position: relative;
-    bottom: 140px;
     transition: opacity .2s ease-in-out;
 
     opacity: .3;
@@ -177,7 +192,7 @@
     opacity: 1;
     color: $secondary-color;
     border: none;
-    outline: none;
     border-radius: 25px;
+    outline: none;
     background-color: $accent-color;
 }

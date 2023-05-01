@@ -5,29 +5,27 @@
     display: block;
 
     width: 90%;
-    height: 45rem;
+    height: 50rem;
     margin: 40px auto;
 }
 
 .reader {
-    height: 100%;
+    height: 50rem;
 }
 
-.read-book-logo__container {
-    display: flex;
-    justify-content: space-between;
+// .read-book-logo__container {
+//     display: flex;
+//     justify-content: space-between;
 
-    width: 90%;
-}
+//     width: 90%;
+// }
 
 .read-book__add-text-button {
-    display: flex;
-    align-items: center;
-    align-self: flex-end;
+    display: block;
+    margin: 30px auto;
 
     width: 150px;
     height: 70px;
-    margin-top: 10px;
 
     border: none;
     border-radius: 10px;
@@ -39,6 +37,12 @@
 
     &:active {
         background-color: darken($color: $secondary-color, $amount: 10);
+    }
+
+    &:disabled {
+        &:hover {
+            background-color: $secondary-color;
+        }
     }
 }
 

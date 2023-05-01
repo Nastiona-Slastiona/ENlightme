@@ -6,14 +6,8 @@ const requestHelper = {
             const accessToken = JSON.parse(localStorage.getItem('access'));
             options.headers.Authorization = `Bearer ${accessToken}`;
         }
-
+        
         let data = await getRequest(url, options);
-
-        if (isAuth && data.status === 401 && await refreshToken()) {
-            const accessToken = JSON.parse(localStorage.getItem('access'));
-            options.headers.Authorization = `Bearer ${accessToken}`;
-            data = await getRequest(url, options);
-        }
         
         return data;
     }
@@ -32,6 +26,7 @@ async function refreshToken() {
         }
     }
     )
+
     if (data.status === 200) {
         const access = JSON.stringify(data.json())['access']
         localStorage.setItem('access', access);
@@ -50,6 +45,14 @@ function errorHandler(response) {
 
 async function getRequest(url, options) {
     const response = await fetch(url, options);
+    
+    // if (isAuth && response.status === 401) {
+    //     await refreshToken();
+    //     const accessToken = JSON.parse(localStorage.getItem('access'));
+    //     options.headers.Authorization = `Bearer ${accessToken}`;
+    //     response = await fetch(url, options);
+    // }
+
     return errorHandler(response, options.method);
 }
 

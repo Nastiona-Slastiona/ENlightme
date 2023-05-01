@@ -3,65 +3,89 @@ using Enlightme.Specifications;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Enlightme.Repositories
+namespace Enlightme.Repositories;
+
+public class Repository<TContext, TEntity>
+    where TContext : DbContext
+    where TEntity : class, IHasId
 {
-    public class Repository<TContext, TEntity>
-        where TContext : DbContext
-        where TEntity : class, IHasId
+    private readonly TContext dataContext;
+    protected readonly DbSet<TEntity> DbSet;
+
+    public Repository(TContext dataContext)
     {
-        private readonly TContext dataContext;
-        protected readonly DbSet<TEntity> DbSet;
+        this.dataContext = dataContext;
+        DbSet = dataContext.Set<TEntity>();
+    }
 
-        public Repository(TContext dataContext)
+    public async Task<TEntity> Create(TEntity entity)
+    {
+        await dataContext.AddAsync<TEntity>(entity);
+        await dataContext.SaveChangesAsync();
+
+        return entity;
+    }
+
+    public async Task Update(TEntity newEntity)
+    {
+        TEntity oldentity = await GetFirstOrDefault(new Specification<TEntity>(e => e.Id == newEntity.Id));
+        oldentity = newEntity;
+
+        await dataContext.SaveChangesAsync();
+    }
+
+    public async Task Delete(TEntity entity)
+    {
+        dataContext.Remove(entity);
+        await dataContext.SaveChangesAsync();
+    }
+
+    public async Task Delete(Specification<TEntity> specification)
+    {
+        await DbSet.Where(specification.ToExpression()).ExecuteDeleteAsync();
+
+        await dataContext.SaveChangesAsync();
+    }
+
+    protected virtual IQueryable<TEntity> GetDbSet()
+    {
+        return DbSet;
+    }
+
+    protected virtual IQueryable<TEntity> GetSpecifiedQuery(Specification<TEntity>? specification = null, IncludedPropertyCollection<TEntity> includes = null)
+    {
+        IQueryable<TEntity> query = (IQueryable<TEntity>)GetDbSet();
+        Expression<Func<TEntity, bool>> expression = specification?.ToExpression();
+        if (expression != null)
         {
-            this.dataContext = dataContext;
-            DbSet = dataContext.Set<TEntity>();
+            query = query.Where(expression);
         }
 
-        public async Task<TEntity> Create(TEntity entity)
+        if (includes != null)
         {
-            await dataContext.AddAsync<TEntity>(entity);
-            await dataContext.SaveChangesAsync();
-
-            return entity;
+            query = includes.Aggregate(query, (current, include) => current.Include(include.AsPath()));
         }
 
-        public async Task Update(TEntity newEntity)
-        {
-            TEntity oldentity = await GetFirstOrDefault<TEntity>(new Specification<TEntity>(e => e.Id == newEntity.Id));
-            oldentity = newEntity;
+        return query;
+    }
 
-            await dataContext.SaveChangesAsync();
-        }
+    public virtual async Task<int> Count(Specification<TEntity> specification)
+    {
+        return await GetSpecifiedQuery(specification)
+            .CountAsync();
+    }
 
-        public async Task Delete(TEntity entity)
-        {
-            dataContext.Remove(entity);
-            await dataContext.SaveChangesAsync();
-        }
+    public async Task<TEntity> GetFirstOrDefault(Specification<TEntity> specification, IncludedPropertyCollection<TEntity> includes = null)
+    {
+        IQueryable<TEntity> query = GetSpecifiedQuery(specification, includes);
 
-        public async Task Delete(Specification<TEntity> specification)
-        {
-            await DbSet.Where(specification.ToExpression()).ExecuteDeleteAsync();
+        return await query.FirstOrDefaultAsync();
+    }
 
-            await dataContext.SaveChangesAsync();
-        }
+    public async Task<IReadOnlyList<TEntity>> GetList(Specification<TEntity>? specification = null, IncludedPropertyCollection<TEntity> includes = null)
+    {
+        IQueryable<TEntity> query = GetSpecifiedQuery(specification, includes);
 
-        protected virtual IQueryable<TEntity> GetDbSet()
-        {
-            return DbSet;
-        }
-
-        public async Task<TEntity> GetFirstOrDefault<TEntity>(Specification<TEntity> specification)
-        {
-            IQueryable<TEntity> query = (IQueryable<TEntity>)GetDbSet();
-            Expression<Func<TEntity, bool>> expression = specification?.ToExpression();
-            if (expression != null)
-            {
-                query= query.Where(expression);
-            }
-
-            return await query.FirstOrDefaultAsync();
-        }
+        return await query.ToListAsync();
     }
 }

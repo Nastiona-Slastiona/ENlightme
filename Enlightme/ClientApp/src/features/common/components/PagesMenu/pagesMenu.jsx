@@ -1,6 +1,5 @@
 import React from "react";
 
-import Navbar from "src/features/home-page/components/Navbar/navbar";
 import Logo from "src/features/common/components/Logo/logo";
 
 import './pagesMenu.scss';

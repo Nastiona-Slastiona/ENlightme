@@ -41,9 +41,18 @@ builder.Services.Configure<AuthenticationConfiguration>(
 
 builder.Services.AddScoped<Repository<DataContext, User>>();
 builder.Services.AddScoped<Repository<DataContext, RefreshToken>>();
+builder.Services.AddScoped<Repository<DataContext, Book>>();
+builder.Services.AddScoped<Repository<DataContext, Genre>>();
+builder.Services.AddScoped<Repository<DataContext, Card>>();
+
 builder.Services.AddScoped<JwtHelper>();
+builder.Services.AddScoped<FileHelper>();
+
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<BookService>();
+builder.Services.AddScoped<CardService>();
+
 builder.Services.AddScoped<AuthenticationConfiguration>();
 
 var app = builder.Build();

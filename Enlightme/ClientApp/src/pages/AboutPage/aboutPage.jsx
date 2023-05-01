@@ -1,8 +1,6 @@
 import React from "react";
 
 import BasePage from "src/components/base/BasePage/basePage";
-import Logo from "src/features/common/components/Logo/logo";
-import Navbar from "src/features/home-page/components/Navbar/navbar";
 import PageName from "src/features/common/components/PageName/pageName";
 import CallToActionSection from "src/features/home-page/components/CallToActionSection/callToActionSection";
 
