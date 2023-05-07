@@ -1,43 +1,70 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
 .active-modal {
     overflow-y: hidden;
 }
 
 .btn-modal {
-    padding: 10px 20px;
-    display: block;
-    margin: 100px auto 0;
     font-size: 18px;
+
+    display: block;
+
+    margin: 100px auto 0;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
-.modal, .overlay {
-    width: 100vw;
-    height: 100vh;
+.modal
+,
+.overlay {
+    position: fixed;
+    z-index: 1;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    position: fixed;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
 }
 
 .overlay {
-    background: rgba(49,49,49,0.8);
+    background: rgba(49,49,49,.8);
 }
+
 .modal-content {
+    line-height: 1.4;
+
     position: absolute;
+    z-index: 1;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
-    padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
+
+    width: fit-content;
     min-width: 300px;
+    padding: 14px 28px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 3px;
+    border-radius: 20px;
+    background: #f1f1f1;
 }
 
 .close-modal {
     position: absolute;
     top: 10px;
     right: 10px;
+
     padding: 5px 7px;
+    transition: 0.2s ease-in-out;
+    &:hover {
+        background-color: $border-color;
+        border-color: $border-color;
+    }
+}
+
+.modal__title {
+    @include typography-primary-bold;
 }

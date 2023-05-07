@@ -1,45 +1,92 @@
-.active-modal {
-    overflow-y: hidden;
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.add-book__form {
+   display: flex;
+   gap: 10px; 
+   padding: 10px;
 }
 
-.btn-modal {
-    padding: 10px 20px;
+.add-book__genre {
+    margin: 35px 0;
+}
+
+.add-book__description {
     display: block;
-    margin: 100px auto 0;
-    font-size: 18px;
+    min-width: 250px;
+    min-height: 150px;
+    padding: 0 25px;
+
+    color: $accent-color;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    background-color: #ffff;
+    border: 2px solid $secondary-color;
+
+    @include typography-primary;
+
+
+    &::placeholder {
+        color: darken($primary-color, 25);
+    }
 }
 
-.modal, .overlay {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-    z-index: 1;
+.add-book__label {
+    @include typography-primary-bold;
+    color: $accent-color;
+    margin: 0 0 0 25px;
 }
 
-.overlay {
-    background: rgba(49,49,49,0.8);
-}
-.modal-content {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
-    padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
-    z-index: 1;
+.add-book__buttons {
+    display: flex;
+    margin: 20px 0 0 0;
 }
 
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 7px;
+.add-book__button {
+    display: block;
+    margin: 0 auto;
+    background-color: $secondary-color;
+    border: none;
+
+    padding: 10px 20px;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: darken($color: $secondary-color, $amount: 10);
+    }
+
+    &:active {
+        background-color: darken($color: $secondary-color, $amount: 20);
+    }
+
+    @include typography-small-bold
+}
+
+.select-genre {
+    height: 53px;
+    width: 250px;
+
+    text-align: center;
+
+    color: $accent-color;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    border: 2px solid $secondary-color;
+
+    @include typography-primary-bold;
+}
+
+.select-language__option {
+    width: fit-content;
+    color: $accent-color;
+    border: none;
+    outline: none;
+
+    &:active {
+        border: none;
+    }
+
+    @include typography-primary-bold;
 }

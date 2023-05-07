@@ -4,14 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 import BasePage from "src/components/base/BasePage/basePage";
 import BookSection from "src/features/home-page/components/BookSection/bookSection";
 import PageName from 'src/features/common/components/PageName/pageName';
+import AddBookModal from "src/features/book-page/components/AddBookModal/addBookModal";
 
 import requestHelper from "src/helpers/requestHelper";
 import serviceUrls from "src/constants/serviceUrls";
 import { fetchUserBooks } from "src/store/books/thunks/booksThunk";
-import fetchGenres from "src/store/books/thunks/genresThunk";
+import fetchCommonInfo from "src/store/books/thunks/commonInfoThunk";
 
 import './userBooksPage.scss';
-import AddBookModal from "../../features/book-page/components/AddBookModal/addBookModal";
 
 
 function removeExtension(filename) {
@@ -31,7 +31,7 @@ export default function UserBooksPage() {
         }
 
         if (genres.length === 0) {
-            dispatch(fetchGenres());
+            dispatch(fetchCommonInfo());
         }
     }, [dispatch]);
 
@@ -47,39 +47,47 @@ export default function UserBooksPage() {
         }
         setAddedBook(book);
         setIsModalOpen(true);
+    }, [dispatch, setAddedBook]);
+
+    const onAddButtonClick = useCallback(async (newBook) => {
+        setIsModalOpen(false);
+        
         const formData = new FormData();
-        for (const key in book) {
-            formData.append(key, book[key]);
+        for (const key in newBook) {
+            formData.append(key, newBook[key]);
         };
 
-        const response = await requestHelper.get(serviceUrls.createBook, {
+        await requestHelper.get(serviceUrls.createBook, {
             method: 'POST',
             headers: {},
             credentials: 'include',
             body: formData
         }, true, true);
-    }, [dispatch, setAddedBook]);
 
-    const onAddButtonClick = useCallback(() => {
-        setIsModalOpen(true);
-    }, [setIsModalOpen]);
+        dispatch(fetchUserBooks());
+    }, [setIsModalOpen, fetchUserBooks, dispatch]);
 
     const onClose = useCallback(() => {
         setIsModalOpen(false);
+        setAddedBook(null);
     }, [setIsModalOpen]);
 
     return (
         <BasePage needAccess={true}>
             <div className="user-book-page__add-button">
-                {/* <button className="user-book-page__input-book-form" onClick={onAddButtonClick}>add book</button> */}
                 <form className="user-book-page__input-book-label" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
                     <input type='file' accept='.epub' className="user-book-page__input-book" onChange={handleSubmit} />
                 </form>
-                {/* <label className="user-book-page__input-book-label" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
-                    <input type='file' accept=".epub"  className="user-book-page__input-book" onChange={onAddButtonClick} />
-                </label> */}
             </div>
-            { isModalOpen && addedBook && <AddBookModal isModalOpen={isModalOpen} onClose={onClose} book={addedBook} /> }    
+            { 
+                isModalOpen && addedBook && 
+                <AddBookModal 
+                    isModalOpen={isModalOpen}
+                    onSaveClick={onAddButtonClick}
+                    onClose={onClose} 
+                    book={addedBook}
+                /> 
+            }    
             <PageName title={'My books'} />
             <BookSection books={userBooks} genres={genres} />
         </BasePage>

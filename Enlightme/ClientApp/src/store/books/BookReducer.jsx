@@ -2,7 +2,7 @@ import ThunkStatus from 'src/store/models/ThunkStatus';
 import { createSlice } from '@reduxjs/toolkit';
 import {fetchBooks, fetchUserBooks} from 'src/store/books/thunks/booksThunk';
 import {fetchBook, fetchUserBookId} from 'src/store/books/thunks/bookThunk';
-import fetchGenres from "src/store/books/thunks/genresThunk";
+import fetchCommonInfo from "src/store/books/thunks/commonInfoThunk";
 
 
 const initialState = {
@@ -11,6 +11,7 @@ const initialState = {
     selectedBook: null,
     userBookId: null,
     genres: [],
+    languages: [],
     status: '',
     error: ''
 };
@@ -51,15 +52,16 @@ const booksSlice = createSlice({
         },
         [fetchUserBooks.rejected]: setError,
 
-        [fetchGenres.pending]: state => {
+        [fetchCommonInfo.pending]: state => {
             state.status = ThunkStatus.Loading;
         },
-        [fetchGenres.fulfilled]: (state, action) => {
-            const genres = [...action.payload[0]];
+        [fetchCommonInfo.fulfilled]: (state, action) => {
+            const commonInfo = action.payload[0];
             state.status = ThunkStatus.Resolved;
-            state.genres = [...state.genres, ...genres];
+            state.genres = [...state.genres, ...commonInfo.genres];
+            state.languages = [...state.languages, ...commonInfo.languages];
         },
-        [fetchGenres.rejected]: setError,
+        [fetchCommonInfo.rejected]: setError,
 
         [fetchBook.pending]: state => {
             state.status = ThunkStatus.Loading;

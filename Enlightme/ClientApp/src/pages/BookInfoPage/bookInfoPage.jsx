@@ -8,7 +8,6 @@ import urlHelper from "src/helpers/urlHelper";
 import serviceUrls from "src/constants/serviceUrls";
 import requestHelper from "src/helpers/requestHelper";
 import routes from "src/constants/routes";
-import { fetchUserBookId } from "src/store/books/thunks/bookThunk";
 
 import bookCover from 'src/static/images/cover.png';
 
@@ -20,12 +19,10 @@ export default function BookInfoPage() {
     const location = useLocation();
     const bookId = +location.pathname.slice(6);
     const [book, setBook] = useState();
-    const userBookId = useSelector(state => state.books.userBookId);
     const isAuth = useSelector(state => state.users.isAuth);
 
     useEffect(() => {
         if (bookId) {
-            // dispatch(fetchUserBookId({id: bookId, isAuth}));
             dispatch(async () => {
                 const url = urlHelper.getUrlByTemplate(
                     serviceUrls.getUserBookId, {id: bookId}
@@ -69,6 +66,25 @@ export default function BookInfoPage() {
         }
     }, [isAuth]);
 
+    const onDeleteButtonClick = useCallback(async () => {
+        const url = urlHelper.getUrlByTemplate(
+            serviceUrls.deleteBook, { bookId }
+        );
+
+        const data = await requestHelper.get(
+            url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }, isAuth, true
+        );
+
+        if (data) {
+            window.location.replace(routes.USER_BOOKS);
+        }
+    }, [bookId]);
+
     if (!book) {
         return <div></div>;
     }
@@ -80,9 +96,7 @@ export default function BookInfoPage() {
                     <PageName title={book.title} />
                     <div className="book-info-page__author-container">
                         <h2 className="book-info-page__author">{
-                            book.authors && (book.authors.map((a, i) => {
-                                return `${a.first_name} ${a.last_name}`
-                            }).join(', '))
+                            book.author
                         }</h2>
                     </div>
                     <section className="book-info-page__book-section">
@@ -96,6 +110,7 @@ export default function BookInfoPage() {
                                         <Link className="book-info-page__link" to={urlHelper.getUrlByTemplate(routes.USER_BOOK_CARDS, { id: book.id })}>
                                             <button className="book-info-page__button">cards</button>
                                         </Link>
+                                        <button className="book-info-page__button" onClick={onDeleteButtonClick}>delete the book</button>
                                     </div>
                                 )
                             }
@@ -106,7 +121,7 @@ export default function BookInfoPage() {
                                 {
                                     book.genre && 
                                         <span className="book-info-page__book-main-info">
-                                            Genres: {book.genre.type}<br />
+                                            Genre: {book.genre.type}<br />
                                         </span>
                                 }
                                 {

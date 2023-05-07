@@ -24,6 +24,14 @@
 
         content: 'add book';
     }
+
+    &:hover {
+        background-color: darken($color: $secondary-color, $amount: 10);
+    }
+
+    &:active {
+        background-color: darken($color: $secondary-color, $amount: 20);
+    }
 }
 
 .user-book-page__input-book {

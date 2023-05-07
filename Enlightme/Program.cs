@@ -43,6 +43,7 @@ builder.Services.AddScoped<Repository<DataContext, User>>();
 builder.Services.AddScoped<Repository<DataContext, RefreshToken>>();
 builder.Services.AddScoped<Repository<DataContext, Book>>();
 builder.Services.AddScoped<Repository<DataContext, Genre>>();
+builder.Services.AddScoped<Repository<DataContext, Language>>();
 builder.Services.AddScoped<Repository<DataContext, Card>>();
 
 builder.Services.AddScoped<JwtHelper>();

@@ -7,7 +7,7 @@ import PageName from "features/common/components/PageName/pageName";
 import PagesMenu from "features/common/components/PagesMenu/pagesMenu";
 
 import { fetchBooks } from "src/store/books/thunks/booksThunk";
-import fetchGenres from "src/store/books/thunks/genresThunk";
+import fetchCommonInfo from "src/store/books/thunks/commonInfoThunk";
 
 import './libraryPage.scss';
 
@@ -22,7 +22,7 @@ export default function LibraryPage() {
         }
 
         if (!genres) {
-            dispatch(fetchGenres());
+            dispatch(fetchCommonInfo());
         }
     }, [dispatch]);
 

@@ -18,6 +18,12 @@
     font-size: 14pt;
 }
 
+@mixin typography-small-bold {
+    @include typography-primary();
+    font-size: 14pt;
+    font-weight: bold
+}
+
 @mixin typography-middle {
     @include typography-primary();
     font-size: 26pt;

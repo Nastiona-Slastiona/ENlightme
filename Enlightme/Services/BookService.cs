@@ -10,16 +10,19 @@ public class BookService
 {
     private readonly Repository<DataContext, Book> bookRepository;
     private readonly Repository<DataContext, Genre> genreRepository;
+    private readonly Repository<DataContext, Language> languagesRepository;
     private readonly FileHelper fileHelper;
 
     public BookService(
-        Repository<DataContext, Book> bookRepository,
         FileHelper fileHelper,
-        Repository<DataContext, Genre> genreRepository)
+        Repository<DataContext, Book> bookRepository,
+        Repository<DataContext, Genre> genreRepository,
+        Repository<DataContext, Language> languagesRepository)
     {
         this.bookRepository = bookRepository;
         this.fileHelper = fileHelper;
         this.genreRepository = genreRepository;
+        this.languagesRepository = languagesRepository;
     }
 
     public async Task<IReadOnlyList<Genre>> GetGenres()
@@ -27,6 +30,13 @@ public class BookService
         var genres = await genreRepository.GetList();
 
         return genres;
+    }
+
+    public async Task<IReadOnlyList<Language>> GetLanguages()
+    {
+        var languages = await languagesRepository.GetList();
+
+        return languages;
     }
 
     public async Task<IReadOnlyList<Book>> GetBooks(int? userId = null)
@@ -76,5 +86,21 @@ public class BookService
         }
 
         return await bookRepository.Create(book);
+    }
+
+    public async Task<bool> DeleteBook(int bookId)
+    {
+        try
+        {
+            Specification<Book> specification = new(b => b.Id == bookId);
+
+            await bookRepository.Delete(specification);
+
+            return true;
+        }   
+        catch (Exception)
+        {
+            return false;
+        }
     }
 }

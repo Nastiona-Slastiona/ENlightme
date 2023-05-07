@@ -4,12 +4,12 @@ import serviceUrls from 'src/constants/serviceUrls';
 import urlHelper from 'src/helpers/urlHelper';
 
 
-const fetchGenres = createAsyncThunk(
-    'books/fetchGenres',
+const fetchCommonInfo = createAsyncThunk(
+    'books/fetchCommonInfo',
     async (input, { rejectWithValue }) => {
         try {
             const url = urlHelper.getUrlByTemplate(
-                serviceUrls.getGenres,
+                serviceUrls.getCommonInfo,
             );
             const data = await requestHelper.get(url);
             return [data, input];
@@ -19,4 +19,4 @@ const fetchGenres = createAsyncThunk(
     }
 );
 
-export default fetchGenres;
+export default fetchCommonInfo;

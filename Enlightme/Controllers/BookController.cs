@@ -1,4 +1,5 @@
-﻿using Enlightme.Dtos;
+﻿using Enlightme.Core.Responses;
+using Enlightme.Dtos;
 using Enlightme.Entities;
 using Enlightme.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -53,13 +54,25 @@ public class BookController : Controller
         return Ok(book);
     }
 
-    [Route("genres")]
+    [Route("common-info")]
     [HttpGet]
     public async Task<IActionResult> GetGenres()
     {
-        IReadOnlyList<Genre> books = await bookService.GetGenres();
+        IReadOnlyList<Genre> genres = await bookService.GetGenres();
+        IReadOnlyList<Language> languages = await bookService.GetLanguages();
 
-        return Ok(books);
+        var data = new CommonData(genres, languages);
+
+        return Ok(data);
+    }
+
+    [Route("languages")]
+    [HttpGet]
+    public async Task<IActionResult> GetLanguages()
+    {
+        IReadOnlyList<Language> languages = await bookService.GetLanguages();
+
+        return Ok(languages);
     }
 
     [Authorize]
@@ -77,5 +90,22 @@ public class BookController : Controller
         Book book = await bookService.CreateBook(bookData, userId);
 
         return Created("success", book);
+    }
+
+    [Authorize]
+    [Route("delete/{bookId:int}")]
+    [HttpDelete]
+    public async Task<IActionResult> Delete(int bookId)
+    {
+        var rawUserId = HttpContext.User.FindFirstValue("id");
+
+        if (!int.TryParse(rawUserId, out int userId))
+        {
+            return Unauthorized();
+        }
+
+        bool isDeleted = await bookService.DeleteBook(bookId);
+
+        return isDeleted ? Ok(isDeleted) : BadRequest(new ErrorResponse("Can't delete the book."));
     }
 }

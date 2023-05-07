@@ -4,14 +4,13 @@ const serviceUrls = {
     getUserSettings: 'http://localhost:8000/api/settings/',
     updateUserSettings: 'http://localhost:8000/api/settings/',
     getUserBookId: 'http://localhost:8000/book/:id/',
-    // getBookInfo: 'http://localhost:8000/api/books/:id/book_info/',
 
     getBooks: 'http://localhost:8000/book/library/',
     getRecommendedBooks: 'http://localhost:8000/api/recommended_library/',
     getUserBooks: 'http://localhost:8000/book/books/',
     getBookById: 'http://localhost:8000/book/:id/',
     createBook: 'http://localhost:8000/book/create/',
-    deleteBook: 'http://localhost:8000/api/books/:id/',
+    deleteBook: 'http://localhost:8000/book/delete/:bookId/',
 
     getCards: 'http://localhost:8000/card/cards/',
     getBookCards: 'http://localhost:8000/api/books/:id/cards/',
@@ -26,7 +25,7 @@ const serviceUrls = {
     deleteNote: 'http://localhost:8000/api/notes/:id/',
 
     getNotifications: 'http://localhost:8000/card/notifications/',
-    getGenres: 'http://localhost:8000/book/genres/',
+    getCommonInfo: 'http://localhost:8000/book/common-info/',
 
     registration: 'http://localhost:8000/auth/register/',
     login: 'http://localhost:8000/auth/login/',

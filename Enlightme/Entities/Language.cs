@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Enlightme.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace Enlightme.Entities;
 
-public class Language
+public class Language : IHasId
 {
     [Key]
     public int Id { get; set; }
