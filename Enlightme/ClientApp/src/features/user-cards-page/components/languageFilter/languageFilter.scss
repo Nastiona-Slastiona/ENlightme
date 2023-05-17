@@ -1,0 +1,22 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.language-filter-field {
+    display: flex;
+    margin-top: 20px;
+}
+
+.filter {
+    width: 300px;
+    height: 50px;
+    margin: 30px 0;
+    padding-left: 20px;
+
+    color: $accent-color;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    box-shadow: 3px 3px 10px lighten($primary-color, 30);
+
+    @include typography-primary-bold;
+}

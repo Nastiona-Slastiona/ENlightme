@@ -13,16 +13,17 @@
     height: 50rem;
 }
 
-// .read-book-logo__container {
-//     display: flex;
-//     justify-content: space-between;
+.read-book-translation__container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px autos;
 
-//     width: 90%;
-// }
+    width: 100%;
+}
 
 .read-book__add-text-button {
     display: block;
-    margin: 30px auto;
 
     width: 150px;
     height: 70px;
@@ -59,13 +60,42 @@
     @include typography-primary;
 }
 
-.read-book__data-added {
-    align-self: flex-end;
+.read-book__data-to-add {
+    display: flex;
+    gap: 20px;
 
     padding: 20px 20px 10px 20px;
 
-    color: $secondary-color;
+    color: $accent-color;
     border-radius: 15px;
     background-color: darken($color: $primary-color, $amount: 10);
-    @include typography-small;
+    @include typography-small-bold;
+}
+
+.read-book__translation {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.read-book__translation-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.read-book__translation-button {
+    border: none;
+    @include typography-small-bold;
+    padding: 5px;
+    border-radius: 3px;
+
+    &:active {
+        background-color: darken($color: $secondary-color, $amount: 30);
+    }
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+
 }

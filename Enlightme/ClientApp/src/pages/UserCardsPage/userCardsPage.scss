@@ -173,12 +173,13 @@
 .user-cards__main-card-container__prev,
 .user-cards__main-card-container__next {
     text-decoration: none;
-    height: 50px;
+    height: 100%;
     width: 50px;
     text-align: center;
     color: $accent-color;
     font-size: 20pt;
     font-weight: bold;
+    cursor: pointer;
 
     :hover {
         color: $accent-color;

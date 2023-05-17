@@ -51,7 +51,7 @@ public class CardController : Controller
         return Ok(amount);
     }
 
-    [Route("cards")]
+    [Route("cards/learn/")]
     [HttpGet]
     public async Task<IActionResult> GetCards()
     {
@@ -67,6 +67,31 @@ public class CardController : Controller
         return Ok(cards);
     }
 
+    [Route("cards")]
+    [HttpGet]
+    public async Task<IActionResult> GetAllCards()
+    {
+        var rawUserId = HttpContext.User.FindFirstValue("id");
+
+        if (!int.TryParse(rawUserId, out int userId))
+        {
+            return Unauthorized();
+        }
+
+        IReadOnlyList<Card> cards = await cardService.GetAllCards(userId);
+
+        return Ok(cards);
+    }
+
+    [Route("delete/{cardId:int}")]
+    [HttpDelete]
+    public async Task<IActionResult> Delete(int cardId)
+    {
+        bool result = await cardService.DeleteCard(cardId);
+
+        return Ok(result);
+    }
+
     [Route("{id:int}/update")]
     [HttpPost]
     public async Task<IActionResult> UpdateCard(CardUpdateData cardUpdateData)
@@ -77,7 +102,6 @@ public class CardController : Controller
         {
             return Unauthorized();
         }
-
 
         var card = await cardService.UpdateCard(cardUpdateData);
 

@@ -61,7 +61,8 @@ public class BookService
         Specification<Book> specification = new(b => b.Id == bookId);
         var includes = new IncludedPropertyCollection<Book>()
         {
-            b => b.Genre
+            b => b.Genre,
+            b => b.Language
         };
 
         return await bookRepository.GetFirstOrDefault(specification, includes);

@@ -7,7 +7,6 @@ const initialState = {
     status: '',
     notifications: undefined,
     cards: [],
-    notes: [],
     books: []
 };
 

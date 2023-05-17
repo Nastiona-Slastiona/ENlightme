@@ -10,9 +10,7 @@ import BookInfoPage from "src/pages/BookInfoPage/bookInfoPage";
 import SignUpPage from "src/pages/SignUpPage/signUpPage";
 import LoginPage from "src/pages/LoginPage/loginPage";
 import UserCardsPage from "src/pages/UserCardsPage/userCardsPage";
-import UserNotesPage from "src/pages/UserNotesPage/userNotesPage";
 import ReadBookPage from "src/pages/ReadBookPage/readBookPage";
-import UserNotificationsPage from "src/pages/UserNotificationsPage/userNotificationsPage";
 import Checkout from "src/components/base/Payment/Checkout";
 
 import routes from "src/constants/routes";
@@ -31,10 +29,8 @@ const Enlightme = () => {
                 <Route path={routes.LOG_IN} element={<LoginPage />} />
                 <Route path={routes.USER_CARDS} element={<UserCardsPage />} />
                 <Route path={routes.USER_BOOK_CARDS} element={<UserCardsPage />} />
-                <Route path={routes.USER_NOTES} element={<UserNotesPage />} />
-                <Route path={routes.USER_BOOK_NOTES} element={<UserNotesPage />} />
+                <Route path={routes.USER_CARDS_LEARN} element={<UserCardsPage />} />
                 <Route path={routes.READ_BOOK} element={<ReadBookPage />} />
-                <Route path={routes.USER_NOTIFICATIONS} element={<UserNotificationsPage />} />
                 <Route exact path={routes.CHECKOUT} element={<Checkout />} />  
             </Routes>
         </BrowserRouter>

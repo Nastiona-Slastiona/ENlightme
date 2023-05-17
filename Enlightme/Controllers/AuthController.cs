@@ -62,8 +62,9 @@ public class AuthController : Controller
         return Ok(authenticatedInfo);
     }
 
-    [HttpPost("login/refresh")]
-    public async Task<IActionResult> Refresh(RefreshRequestInfo refreshRequest)
+    [Route("refresh")]
+    [HttpPost]
+    public async Task<IActionResult> Refresh([FromBody]RefreshRequestInfo refreshRequest)
     {
         bool isValidRefreshToken = jwtHelper.Validate(refreshRequest.RefreshToken);
 

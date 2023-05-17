@@ -1,0 +1,2982 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/HeaderItem/headerItem.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.header-item__container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-item__icon {
+  width: 30px;
+  height: 30px;
+}
+
+.header-item__title {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+  min-width: fit-content;
+  text-decoration: none;
+  color: #27354d;
+  transition: ease-in-out 2ms;
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/Notifications/notifications.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.notifications-link {
+  display: flex;
+  text-decoration: none;
+}
+.notifications-link:hover {
+  display: flex;
+}
+
+.notifications {
+  width: 30px;
+  height: 30px;
+}
+
+.notifications-value {
+  position: relative;
+  bottom: 12px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 1px;
+  padding: 2px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #f0e9da;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+}
+.notifications-value--dark {
+  background-color: #76aeba;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/UserMenu/userMenu.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.user-menu__info-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  padding: 30px 10px;
+  min-width: 420px;
+  min-height: 300px;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  border-radius: 0 0 20px 15px;
+  background-color: #76aeba;
+  outline: 8px solid #76aeba;
+}
+.user-menu__info-container--active:hover {
+  opacity: 1;
+}
+
+.user-menu__info {
+  display: block;
+  width: 420px;
+  height: fit-content;
+}
+
+.user-menu-info__user-photo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.user-menu-info__menu {
+  display: flex;
+  justify-content: end;
+}
+
+.user-menu-info__user-photo {
+  display: block;
+  border-radius: 50%;
+}
+
+.user-menu-info__user-photo-img {
+  display: block;
+  width: 250px;
+  height: 250px;
+  border-radius: inherit;
+}
+
+.user-menu-info__user-photo-name {
+  font-size: 28pt;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  padding: 10px 0;
+  color: #123C69;
+}
+
+.user-account-info__settings {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+.user-account-info__menu-container {
+  display: block;
+  margin: 30px 0 50px 0;
+  color: #123C69;
+}
+
+.user-account-info__menu-nav {
+  display: flex;
+}
+
+.user-account-info__menu {
+  display: block;
+  padding: 0 100px 0 30px;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 26pt;
+  font-weight: 300;
+}
+
+.user-account-info__menu-item {
+  display: flex;
+  padding: 10px 0;
+  gap: 20px;
+}
+
+.user-account-info__menu-item-text {
+  font-size: 18pt;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  color: #27354d;
+}
+.user-account-info__menu-item-text:hover {
+  cursor: pointer;
+}
+.user-account-info__menu-item-text:visited {
+  color: #123C69;
+}
+
+.user-account-info__menu-item-icon {
+  width: 35px;
+  height: 35px;
+  align-self: start;
+}
+
+.user-account-info__delete-button {
+  background: none;
+  border: none;
+  transition: all 0.15s ease-in-out;
+}
+.user-account-info__delete-button:focus {
+  transform: scale(0.85, 0.85);
+}
+
+.user-menu__edit-button {
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+}
+
+.user-menu__edit-button-icon {
+  width: 100%;
+  height: 100%;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/Header/header.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.header-container {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  left: 5%;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: 80px;
+  border: 4px solid #ddbc95;
+  border-top: none;
+  border-radius: 0 0 30px 30px;
+  background-color: #f0e9da;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-inline: 135px;
+}
+
+.header-main {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+  gap: 50px;
+}
+
+.header-menu__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0 20px;
+  transition: 0.3s;
+}
+.header-menu__container--active {
+  z-index: 3;
+  margin-left: 400px;
+}
+
+.header__account {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-menu {
+  width: 25px;
+  height: 20px;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/Footer/footer.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.footer__container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 2px solid #76aeba;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+}
+.footer--light {
+  background-color: #ddbc95;
+}
+.footer--dark {
+  background-color: #f0e9da;
+}
+
+.footer-inner {
+  color: #27354d;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/components/base/BasePage/basePage.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.base-page {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("./background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin: auto auto;
+}
+
+.base-page__content {
+  display: block;
+  margin: 0 auto;
+  padding: 70px;
+  height: fit-content;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/components/base/Carousel/carousel.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.carousel__container {
+  display: block;
+  height: 70%;
+  width: 100%;
+}
+
+.carousel-content {
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-button__container {
+  position: absolute;
+  top: 350px;
+  height: 100%;
+  z-index: 0;
+}
+
+.carousel-button {
+  font-size: 22px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  color: #76aeba;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(98, 109, 113, 0.568627451);
+}
+.carousel-button:hover {
+  background-color: #626d71;
+}
+
+.carousel-button--right {
+  right: 7%;
+}
+
+.carousel-button--left {
+  left: 7%;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/home-page/components/BookAdviseSection/bookAdviseSection.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.book-advise-section__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 100px);
+}
+
+.book-advise-section {
+  display: flex;
+  gap: 80px;
+}
+
+.book-advise-info {
+  font-family: "Lucida Sans", sans-serif;
+  font-size: 16pt;
+  color: #76aeba;
+}
+
+.book-advise-info__title {
+  font-size: 45pt;
+  font-weight: bold;
+  width: 500px;
+  height: 150px;
+  word-wrap: break-word;
+}
+
+.book-advise-info__description {
+  overflow: hidden;
+  max-width: 350px;
+  min-height: 50px;
+  padding: 10px 25px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.book-advise-button__container {
+  padding: 30px 25px;
+}
+
+.book-advise-button {
+  font-size: 16pt;
+  width: 230px;
+  height: 68px;
+  transition: 0.3s ease-in;
+  color: #123C69;
+  border: none;
+  border-radius: 15px;
+  background-color: #76aeba;
+}
+.book-advise-button:hover {
+  color: #76aeba;
+  background-color: #123C69;
+}
+
+.book-advise-info__cover {
+  width: 220px;
+  height: 300px;
+  border-radius: 15px;
+  background-color: #76aeba;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/Logo/logo.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.logo__container {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.logo {
+  width: 130px;
+  height: 110px;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/PagesMenu/pagesMenu.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.pages-menu__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pages-menu-logo__container {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.pages-menu-logo {
+  width: 130px;
+  height: 110px;
+}
+
+.pages-menu__navbar {
+  display: flex;
+  justify-content: end;
+  padding: 0;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/home-page/components/IntroSection/introSection.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.intro-section__container {
+  display: block;
+  height: 770px;
+}
+
+.intro-section__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.intro-section-logo__container {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.intro-section-logo {
+  width: 130px;
+  height: 110px;
+}
+
+.intro-section-menu {
+  margin-top: 40px;
+  margin-right: 70px;
+}
+
+.intro-section__navbar {
+  display: flex;
+  justify-content: end;
+  padding: 0;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/Home/home.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.home-page__container {
+  display: block;
+}
+
+.upload-section {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  display: flex;
+  gap: 20px;
+  margin: 80px auto;
+  width: 90%;
+}
+
+.upload-section__uploader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px;
+  width: 60%;
+  border: 4px solid #ddbc95;
+  border-radius: 15px;
+  min-height: 200px;
+  font-size: 28pt;
+}
+
+.upload-section__info {
+  padding: 30px;
+  text-align: center;
+  width: 40%;
+}
+
+.upload-input {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  display: none;
+  padding: 30px;
+  background-color: #f0e9da;
+  border: none;
+}
+
+.upload-image {
+  padding: 10px;
+}
+
+.cards-section {
+  margin: 80px auto;
+  width: 90%;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/PageName/pageName.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.page-name__container {
+  text-align: center;
+  color: #123C69;
+  margin-top: 20px;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 50pt;
+  font-weight: 600;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/components/base/Input/input.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.input__container {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  min-width: 250px;
+  height: 50px;
+  padding: 0 25px;
+  color: #123C69;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  background-color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.input--bordered {
+  border: 2px solid #76aeba;
+}
+.input::placeholder {
+  color: #cbb37f;
+}
+
+.input-label {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  color: #123C69;
+  margin: 0 0 0 25px;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/UserAccountPage/userAccountPage.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.user-account__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.user-account__form {
+  display: block;
+  min-width: fit-content;
+  max-width: 1200px;
+  height: 550px;
+  margin-top: 70px;
+  padding: 50px 60px;
+  border-radius: 50px;
+  background-color: rgba(240, 233, 218, 0.8274509804);
+  border: 3px solid #76aeba;
+}
+
+.user-account__form-fields {
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
+  gap: 20px;
+}
+
+.user-account__image-form-field {
+  display: block;
+}
+
+.user-account__image-container {
+  margin: 10px 0;
+}
+
+.user-account__image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.user-account__image-input {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.user-account__image-input input {
+  display: none;
+}
+
+.user-account-form__info-fields {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding-right: 30px;
+  gap: 20px;
+}
+
+.user-account-form__info-field-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin: 0 30px;
+}
+
+.submit-button__container {
+  position: relative;
+  bottom: -20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.submit-button {
+  font-weight: 600;
+  width: 280px;
+  height: 60px;
+  color: #76aeba;
+  border: none;
+  border-radius: 15px;
+  background-color: #123C69;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+}
+
+.checkbox-input {
+  display: none;
+}
+.checkbox-input:checked + label .checkbox:after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 30px 0;
+  color: #123C69;
+  gap: 20px;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  align-self: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #f0e9da;
+  border-radius: 7px;
+  background-color: white;
+}
+.checkbox:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 30px;
+  height: 30px;
+  content: "";
+  transition: 0.3s;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 7px;
+  background-color: #123C69;
+}
+
+.select-language {
+  height: 50px;
+  margin: 30px 0;
+  text-align: center;
+  color: #123C69;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  box-shadow: 3px 3px 10px white;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.select-language__option {
+  width: fit-content;
+  color: #123C69;
+  border: none;
+  outline: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.select-language__option:active {
+  border: none;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/home-page/components/BookSection/bookSection.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.book-section__container {
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  min-height: 350px;
+  margin-top: 10px;
+  padding: 30px 20px;
+}
+
+.book-section {
+  display: block;
+}
+
+.book-section__header-container {
+  display: block;
+  color: #76aeba;
+}
+
+.book-section__header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 50pt;
+  font-weight: 600;
+}
+
+.book-section-genre-filter__container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 50px;
+}
+
+.book-section-genre-filter {
+  transition: border-bottom 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+  color: #76aeba;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.book-section-genre-filter--active {
+  padding-bottom: 4px;
+  color: #123C69;
+  border-bottom: 3px dashed #76aeba;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.book-section-genre-filter:hover {
+  cursor: pointer;
+  color: #123C69;
+}
+
+.book-section__content {
+  display: grid;
+  min-height: 300px;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 20px 80px;
+  border: 3px solid #76aeba;
+  border-radius: 35px;
+  background-color: rgba(118, 173, 186, 0.3529411765);
+  overflow-wrap: normal;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 100px;
+}
+
+.book-section__no-content {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.book-section__item-container {
+  display: block;
+  height: fit-content;
+}
+
+.book-section__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  height: 280px;
+  border-radius: 20px;
+}
+
+.book-section__item-info {
+  display: block;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.book-section__item-title {
+  max-width: 230px;
+  word-break: break-all;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.book-section__item-price {
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+}
+
+.book-section__item-cover {
+  width: 80%;
+  height: 80%;
+  border-radius: 15px;
+}
+
+.book-section__item-cover-image-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.book-section__item-cover-image {
+  width: 90%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.book-section__item-button-container {
+  position: relative;
+  bottom: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0.3;
+  color: #76aeba;
+  border-radius: 15px;
+}
+.book-section__item-button-container:hover {
+  opacity: 1;
+  backdrop-filter: blur(70%);
+}
+
+.book-section__item-button-link {
+  text-decoration: none;
+}
+
+.book-section__item-button {
+  font-size: 16pt;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 50px;
+  text-decoration: none;
+  opacity: 1;
+  color: #76aeba;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  background-color: #123C69;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/LibraryPage/libraryPage.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.library__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.library-page-logo__container {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.library-page__navbar {
+  display: flex;
+  justify-content: end;
+  padding: 0;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/components/base/Modal/modal.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+  font-size: 18px;
+  display: block;
+  margin: 100px auto 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.modal,
+.overlay {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+  line-height: 1.4;
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  left: 50%;
+  width: fit-content;
+  min-width: 300px;
+  padding: 14px 28px;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  border-radius: 20px;
+  background: #f1f1f1;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+  transition: 0.2s ease-in-out;
+}
+.close-modal:hover {
+  background-color: #df4d09;
+  border-color: #df4d09;
+}
+
+.modal__title {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/book-page/components/AddBookModal/addBookModal.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.add-book__form {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.add-book__genre {
+  margin: 35px 0;
+}
+
+.add-book__description {
+  display: block;
+  min-width: 250px;
+  min-height: 150px;
+  padding: 0 25px;
+  color: #123C69;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  background-color: white;
+  border: 2px solid #76aeba;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+}
+.add-book__description::placeholder {
+  color: #cbb37f;
+}
+
+.add-book__label {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  color: #123C69;
+  margin: 0 0 0 25px;
+}
+
+.add-book__buttons {
+  display: flex;
+  margin: 20px 0 0 0;
+}
+
+.add-book__button {
+  display: block;
+  margin: 0 auto;
+  background-color: #76aeba;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+  font-weight: bold;
+}
+.add-book__button:hover {
+  background-color: #559aa8;
+}
+.add-book__button:active {
+  background-color: #447b86;
+}
+
+.select-genre {
+  height: 53px;
+  width: 250px;
+  text-align: center;
+  color: #123C69;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  border: 2px solid #76aeba;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.select-language__option {
+  width: fit-content;
+  color: #123C69;
+  border: none;
+  outline: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.select-language__option:active {
+  border: none;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/UserBooksPage/userBooksPage.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.user-book-page__add-button {
+  display: flex;
+  justify-content: end;
+  margin: 0 100px;
+}
+
+.user-book-page__input-book-label {
+  width: 120px;
+  height: 70px;
+  margin-top: 30px;
+  border-radius: 15px;
+  background-color: #76aeba;
+}
+.user-book-page__input-book-label::before {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  position: relative;
+  top: 30%;
+  left: 10%;
+  content: "add book";
+}
+.user-book-page__input-book-label:hover {
+  background-color: #559aa8;
+}
+.user-book-page__input-book-label:active {
+  background-color: #447b86;
+}
+
+.user-book-page__input-book {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/home-page/components/CallToActionItem/callToActionItem.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.call-to-action-item {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+  height: 60%;
+  transition: transform 0.3s ease-in-out;
+  border: 2px dashed #123C69;
+  border-radius: 30px;
+}
+.call-to-action-item:hover {
+  transform: scale(1.1);
+}
+
+.call-to-action-item__image {
+  display: flex;
+  align-self: center;
+}
+
+.call-to-action-item__image--colored {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/home-page/components/CallToActionSection/callToActionSection.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.call-to-action-section__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 195px;
+  background-color: #76aeba;
+}
+
+.call-to-action-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1000px;
+  height: 100%;
+  orientation: landscape;
+  gap: 50px;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/AboutPage/aboutPage.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.about-page__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-page-logo__container {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.about-page__navbar {
+  display: flex;
+  justify-content: end;
+  padding: 0;
+}
+
+.about-page-call-to-action {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.about-page-text__container {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+  align-content: center;
+  padding: 20px 10px;
+  margin: 30px 20px;
+}
+
+.about-page__text {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  font-size: 40pt;
+  color: #76aeba;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/BookInfoPage/bookInfoPage.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.book-info-page__author-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.book-info-page__author {
+  font-size: 38pt;
+  color: #76aeba;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.book-info-page__book-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 60px 30px;
+  gap: 80px;
+}
+
+.book-info-page__book-visual-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.book-info-page__book-cover-container {
+  margin-bottom: auto;
+  padding: 35px;
+  border-radius: 20px;
+}
+
+.book-info-page__book-cover {
+  width: 270px;
+  height: 370px;
+  border-radius: 20px;
+  background-color: #76aeba;
+}
+
+.book-info-page__book-text-info {
+  display: block;
+  margin-top: 50px;
+}
+
+.book-info-page__book-main-info-container {
+  width: 770px;
+  height: 130px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #76aeba;
+  box-shadow: 3px 3px 7px #fffffe;
+}
+
+.book-info-page__book-main-info {
+  color: #123C69;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  overflow-wrap: break-word;
+}
+
+.book-info-page__book-description-container {
+  width: 770px;
+  min-height: 320px;
+  margin-top: 20px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #76aeba;
+  box-shadow: 3px 3px 7px #fffffe;
+}
+
+.book-info-page__book-description {
+  word-wrap: break-word;
+  color: #123C69;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.book-info-page__price-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  color: #123C69;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  gap: 40px;
+}
+
+.book-info-page__price {
+  display: block;
+}
+
+.book-info-page__button {
+  display: block;
+  width: 230px;
+  height: 55px;
+  color: #123C69;
+  border: none;
+  border-radius: 15px;
+  transition: 0.3s;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.book-info-page__button:hover {
+  color: #76aeba;
+  background-color: #e1d3b6;
+}
+.book-info-page__button:active {
+  background-color: #123C69;
+}
+
+.book-info-page__read-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.book-info-page__link {
+  text-decoration: none;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/SignUpPage/signUpPage.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.sign-up-page__section {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.sign-up-page__form {
+  display: block;
+  padding: 50px 70px;
+  border: 3px solid #ddbc95;
+  border-radius: 20px;
+  background-color: rgba(240, 233, 218, 0.8274509804);
+}
+
+.sign-up-page__form-fields {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.sign-up-page__button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sign-up-page__button {
+  font-weight: 600;
+  width: 200px;
+  height: 50px;
+  color: #76aeba;
+  border: none;
+  border-radius: 20px;
+  background-color: #123C69;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+}
+.sign-up-page__button:hover {
+  background-color: #0b233d;
+}
+
+.sign-up-page__photo-input input {
+  display: none;
+}
+
+.sign-up-page__photo-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  color: #76aeba;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  background-color: #123C69;
+  box-shadow: 3px 3px 10px white;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.sign-up-page__photo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sign-up-page__photo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  border-radius: 50%;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/LoginPage/loginPage.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.login-page__form {
+  z-index: 2;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding: 30px 50px;
+  border: 3px solid #ddbc95;
+  border-radius: 20px;
+  background-color: rgba(240, 233, 218, 0.8274509804);
+}
+
+.login-page__register {
+  display: flex;
+  justify-content: center;
+  color: #626d71;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 22pt;
+}
+
+.login-page__register-link {
+  color: inherit;
+  margin-left: 10px;
+  transition: 0.2s ease-in-out;
+}
+.login-page__register-link:hover {
+  color: #27354d;
+}
+
+.page-container .base-page {
+  background-image: url("./login_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-page__form-fields {
+  display: block;
+  width: 380px;
+  margin: 0 auto;
+}
+
+.login-page__button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 90px;
+}
+
+.login-page__button {
+  font-weight: 600;
+  width: 200px;
+  height: 50px;
+  color: #76aeba;
+  border: none;
+  border-radius: 20px;
+  background-color: #123C69;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+}
+.login-page__button:hover {
+  background-color: #0b233d;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/user-cards-page/components/userCardsList/userCardsList.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.user-cards-list {
+  display: block;
+  margin: 40px auto;
+}
+
+.user-card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 15px auto;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #76aeba;
+}
+
+.card-item__value {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  font-size: 14pt;
+  margin-left: 40%;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.card-item__value:hover {
+  font-size: 16pt;
+  font-weight: bolder;
+}
+
+.card-item__remove-button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.user-cards__show-more {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  transition: color 0.3s ease-in-out;
+  color: #76aeba;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.user-cards__show-more:hover {
+  cursor: pointer;
+  color: #123C69;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/features/common/components/BookFilter/bookFilter.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.filter-field {
+  display: flex;
+  justify-content: center;
+}
+
+.filter {
+  width: 300px;
+  height: 50px;
+  margin: 30px 0;
+  padding-left: 20px;
+  color: #123C69;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  box-shadow: 3px 3px 10px white;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/UserCardsPage/userCardsPage.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.tooltip {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+  color: #123C69;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -20px;
+}
+
+.user-cards__filter-field {
+  display: flex;
+  justify-content: center;
+}
+
+.user-card__container {
+  display: block;
+}
+
+.select-book {
+  width: 300px;
+  height: 50px;
+  margin: 30px 0;
+  padding-left: 20px;
+  color: #123C69;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  box-shadow: 3px 3px 10px white;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.user-cards-section {
+  display: block;
+  width: 70%;
+  max-width: 900px;
+  margin: auto auto;
+}
+
+.user-cards__main-card-container {
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+  gap: 10px;
+  box-sizing: border-box;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.user-cards__main-card {
+  width: 90%;
+  min-width: fit-content;
+  height: 200px;
+  margin: auto auto;
+  margin: 30px auto;
+  list-style: none;
+  transition: all 0.8s ease-in-out;
+  border-radius: 20px;
+  background-color: #76aeba;
+  transform-style: preserve-3d;
+  position: relative;
+  flex: 0 0 100%;
+  counter-increment: item;
+}
+.user-cards__main-card--front, .user-cards__main-card--back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transform: rotateX(0deg);
+  backface-visibility: hidden;
+}
+.user-cards__main-card--back {
+  transform: rotateX(-180deg);
+}
+.user-cards__main-card:active {
+  transform: rotateX(-180deg);
+}
+
+.card-text {
+  font-size: 42pt;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.user-cards__main-card-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto auto;
+  gap: 50px;
+}
+
+.user_cards__card-button {
+  width: 250px;
+  height: 50px;
+  transition: 0.3s;
+  color: #76aeba;
+  border: none;
+  border-radius: 15px;
+  background-color: #123C69;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.user_cards__card-button:hover {
+  background-color: #0b233d;
+}
+.user_cards__card-button:active {
+  background-color: #030a12;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: none;
+  background: transparent;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+
+.carousel__navigation {
+  display: flex;
+  margin: 0 10px;
+  position: relative;
+  top: 43%;
+}
+
+.carousel__navigation .user-cards__main-card-container__next {
+  position: absolute;
+  right: 0;
+}
+
+.user-cards__main-card-container__prev,
+.user-cards__main-card-container__next {
+  text-decoration: none;
+  height: 100%;
+  width: 50px;
+  text-align: center;
+  color: #123C69;
+  font-size: 20pt;
+  font-weight: bold;
+  cursor: pointer;
+}
+.user-cards__main-card-container__prev :hover,
+.user-cards__main-card-container__next :hover {
+  color: #123C69;
+  font-size: 20pt;
+  font-weight: bold;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/UserNotesPage/userNotesPage.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.user-note__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  padding: 10px 20px;
+  word-wrap: break-word;
+  border: 2px solid #123C69;
+  border-radius: 15px;
+  background-color: #76aeba;
+  background-image: url("/src/static/images/note.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+.user-note__container:hover {
+  height: fit-content;
+  z-index: 2;
+}
+
+.user-note {
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  width: 80%;
+  height: 80%;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.user-notes__container {
+  display: grid;
+  width: 90%;
+  margin: 50px auto;
+  gap: 40px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.user-notes__show-more {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  transition: color 0.3s ease-in-out;
+  color: #76aeba;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.user-notes__show-more:hover {
+  cursor: pointer;
+  color: #123C69;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/ReadBookPage/readBookPage.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.reader__container {
+  display: block;
+  width: 90%;
+  height: 50rem;
+  margin: 40px auto;
+}
+
+.reader {
+  height: 50rem;
+}
+
+.read-book-translation__container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px autos;
+  width: 100%;
+}
+
+.read-book__add-text-button {
+  display: block;
+  width: 150px;
+  height: 70px;
+  border: none;
+  border-radius: 10px;
+  background-color: #76aeba;
+}
+.read-book__add-text-button:hover {
+  background-color: #6ca8b5;
+}
+.read-book__add-text-button:active {
+  background-color: #559aa8;
+}
+.read-book__add-text-button:disabled:hover {
+  background-color: #76aeba;
+}
+
+.read-book__add-text {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+}
+
+.read-book__data-to-add {
+  display: flex;
+  gap: 20px;
+  padding: 20px 20px 10px 20px;
+  color: #123C69;
+  border-radius: 15px;
+  background-color: #e1d3b6;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.read-book__translation {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.read-book__translation-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.read-book__translation-button {
+  border: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 3px;
+}
+.read-book__translation-button:active {
+  background-color: #335c64;
+}
+.read-book__translation-button:hover {
+  background-color: #76aeba;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/pages/UserNotificationsPage/userNotificationsPage.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  transition: all 2s ease-in-out;
+  --primary-color: #53707266;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #F0F4F4;
+  --accent-color: #537072;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #123C69;
+  --navbar-intro-color: #EDC7B7;
+}
+
+.theme--light {
+  transition: all 2s ease-in-out;
+}
+
+.theme--dark {
+  transition: all 2s ease-in-out;
+  --primary-color: #2c4a52;
+  --primary-color-lighter: #6d868898;
+  --secondary-color: #121e21;
+  --accent-color: #F0F4F4;
+  --color-dark: #537072;
+  --color-dark-less-opacity: #5471739c;
+  --font-primary-color: #ffff;
+  --font-dark: #1c201f;
+  --navbar-intro-color: #aebdb9;
+}
+
+.notification-list {
+  display: block;
+  width: 60%;
+  max-width: 800px;
+  margin: 80px auto;
+}
+
+.notification__container {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  border-radius: 15px;
+  background-color: #76aeba;
+  box-shadow: 2px 2px 7px #f0e9da;
+  gap: 40px;
+}
+
+.notification-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.notification-message {
+  margin-top: 10px;
+}
+
+.notification {
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+  color: #123C69;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-size: 14pt;
+}
+.notification:hover {
+  border-bottom: 2px solid #123C69;
+}
+
+.notification span {
+  padding: 0 0 0 30px;
+  font-family: "Raleway", sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[4]!./src/styles/reset.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+table,
+thead,
+th,
+tr,
+td,
+tbody,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*# sourceMappingURL=main.css.map*/

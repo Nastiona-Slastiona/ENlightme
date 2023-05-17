@@ -127,7 +127,7 @@ export default function BookInfoPage() {
                                 {
                                     book.language && 
                                         <span className="book-info-page__book-main-info">
-                                            Language: {book.language}<br />
+                                            Language: {book.language.languageName}<br />
                                         </span>
                                 }
                                 {

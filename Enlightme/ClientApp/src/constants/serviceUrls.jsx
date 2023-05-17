@@ -13,23 +13,19 @@ const serviceUrls = {
     deleteBook: 'http://localhost:8000/book/delete/:bookId/',
 
     getCards: 'http://localhost:8000/card/cards/',
+    getCardsLearn: 'http://localhost:8000/card/cards/learn/',
     getBookCards: 'http://localhost:8000/api/books/:id/cards/',
     createCard: 'http://localhost:8000/card/create/',
-    deleteCard: 'http://localhost:8000/api/books/:bookId/cards/:id/',
+    deleteCard: 'http://localhost:8000/card/delete/:cardId/',
     finishedCard: 'http://localhost:8000/api/cards/:id/',
     updateCard: 'http://localhost:8000/card/:id/update/',
-
-    getNotes: 'http://localhost:8000/api/notes/',
-    getBookNotes: 'http://localhost:8000/api/books/:id/notes/',
-    createNote: 'http://localhost:8000/api/books/:id/notes/',
-    deleteNote: 'http://localhost:8000/api/notes/:id/',
 
     getNotifications: 'http://localhost:8000/card/notifications/',
     getCommonInfo: 'http://localhost:8000/book/common-info/',
 
     registration: 'http://localhost:8000/auth/register/',
     login: 'http://localhost:8000/auth/login/',
-    refreshToken: 'http://localhost:8000/auth/login/refresh/',
+    refreshToken: 'http://localhost:8000/auth/refresh/',
     signOut: 'http://localhost:8000/auth/logout/',
 
     payment: 'http://localhost:8000/api/payment/create-payment-intent/',

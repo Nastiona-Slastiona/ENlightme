@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import serviceUrls from "src/constants/serviceUrls";
 import requestHelper from "src/helpers/requestHelper";
 import urlHelper from "src/helpers/urlHelper";
+import LanguageFilter from '../../features/user-cards-page/components/languageFilter/languageFilter';
 
 
 function isNumber(char) {
@@ -26,48 +27,62 @@ function isNumber(char) {
 }
 
 export default function UserCardsPage() {
-    const dispatch = useDispatch();
     const location = useLocation();
-    const [userBookId, setUserBookId] = useState(location.pathname.split('/')[2]);
-    const [cards, setCards] = useState([]);
+    const userBookId = +location.pathname.split('/')[2];
+    const onlyLearn = location.pathname.includes('learn');
+
+    const dispatch = useDispatch();
+    const [bookId, setBookId] = useState(userBookId);
+    const [cards, setCards] = useState();
     const [mainCard, setMainCard] = useState();
 
     useEffect(() => {
         ( 
             async () => {
-                // const url = (isNumber(userBookId) && +userBookId !== 0)
-                //     ? urlHelper.getUrlByTemplate(
-                //         serviceUrls.getBookCards,
-                //         {
-                //             id: +userBookId
-                //         }
-                //     )
-                //     : urlHelper.getUrlByTemplate(
-                //         serviceUrls.getCards,
-                //     );
-                const data = await requestHelper.get(
-                    serviceUrls.getCards, {
+                if (!cards) {
+                    const url = onlyLearn ? serviceUrls.getCardsLearn : serviceUrls.getCards;
+
+                    const data = await requestHelper.get(
+                        url, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         credentials: 'include'
-                }, true, true);
+                    }, true, true);
                 
-                if (+userBookId) {
-                    console.log(data.filter(c => c.bookId === userBookId));
-                    setCards(data.filter(c => c.bookId === userBookId));
-                    setMainCard(data.filter(c => c.bookId === userBookId)[0]);
-                } else {
-                    setCards(data);
-                    setMainCard(data[0]);
+                    if (userBookId) {
+                        console.log(userBookId, data);
+                        setCards(data.filter(c => c.bookId === userBookId));
+                        setMainCard(data.filter(c => c.bookId === userBookId)[0]);
+                    } else {
+                        setCards(data);
+                        setMainCard(data[0]);
+                    }
                 }
             }
         )();
     }, [dispatch, userBookId, mainCard]);
 
-    const onRepeatedClick = useCallback(async () => {
-        const data = await requestHelper.get(
+    const onRepeatedClick = useCallback(() => {
+        onButtonClick();
+    }, [onButtonClick, mainCard, cards]);
+
+    const onFinishedClick = useCallback(() => {
+        onButtonClick(true);
+    }, [onButtonClick, mainCard, cards]);
+
+    const onButtonClick = useCallback(async (isFinishButton=false) => {
+        const lastIndex = cards.length - 1;
+        const cardInd = cards.findIndex(c => c.id === mainCard.id);
+
+        const selectStatement = cardInd === lastIndex 
+            ? 0 
+            : cardInd + 1
+        setMainCard(cards[selectStatement]);
+        setCards(cards.filter(c => c.id !== mainCard.id));
+
+        await requestHelper.get(
             urlHelper.getUrlByTemplate(serviceUrls.updateCard, { id: mainCard.id }),
             {
                 method: 'POST',
@@ -76,17 +91,24 @@ export default function UserCardsPage() {
                 },
                 credentials: 'include',
                 body: JSON.stringify({
-                    intervalId: mainCard.intervalId,
+                    intervalId: isFinishButton ? 6 : mainCard.intervalId,
                     cardId: mainCard.id
                 })
             }, true, true
         );
-    }, [mainCard]);
+    }, [mainCard, cards]);
 
-    const onFilterChanged = useCallback((bookId) => {
-        setUserBookId(bookId);
-        setCards([]);
-    }, [setUserBookId, setCards]);
+    const onFilterChanged = useCallback((selectedBookId) => {
+        setBookId(selectedBookId);
+        setCards(cards.filter(c => c.bookId === +selectedBookId));
+        setMainCard(cards.filter(c => c.bookId === +selectedBookId)[0]);
+    }, [setBookId, setCards, cards, setMainCard]);
+
+    const onLangChanged = useCallback((selectedLangId) => {
+        console.log(cards.filter(c => c.languageId === +selectedLangId));
+        setCards(cards.filter(c => c.languageId === +selectedLangId));
+        setMainCard(cards.filter(c => c.languageId === +selectedLangId)[0]);
+    }, [setBookId, setCards, cards, setMainCard]);
 
     const onPrevNextClick = useCallback((isPrev = false) => {
         const lastIndex = cards.length - 1;
@@ -98,7 +120,6 @@ export default function UserCardsPage() {
             : cardInd === lastIndex 
                 ? 0 
                 : cardInd + 1
-
         setMainCard(cards[selectStatement])
     }, [cards, setMainCard, mainCard]);
 
@@ -106,15 +127,12 @@ export default function UserCardsPage() {
         onPrevNextClick();
     }, [cards, setMainCard, mainCard]);
 
-    const onPrevClick = useCallback(() => {
+    const onPrevClick = useCallback((e) => {
         onPrevNextClick(true);
     }, [cards, setMainCard, mainCard]);
 
     const mainCardItem = useMemo(() => {
-        if (cards.length > 0 && mainCard) {
-            const cardInd = cards.findIndex(c => c.id === mainCard.id);
-            const lastIndex = cards.length - 1;
-
+        if (cards && mainCard) {
             return (
                 <div className='user-cards__main-card'>
                     <div className='user-cards__main-card--front'>
@@ -124,13 +142,11 @@ export default function UserCardsPage() {
                         <span className='card-text'>{mainCard.translation}</span>
                     </div>
                     <div className="carousel__navigation">
-                        <a 
-                            href={`#card${cardInd === 0 ? lastIndex : cardInd - 1}`}
+                        <a
                             className="user-cards__main-card-container__prev"
                             onClick={onPrevClick}
                         >{'<'}</a>
-                        <a 
-                            href={`#card${cardInd === lastIndex ? 0 : cardInd + 1}`}
+                        <a
                             className="user-cards__main-card-container__next"
                             onClick={onNextClick}
                         >{'>'}</a>
@@ -138,26 +154,35 @@ export default function UserCardsPage() {
                 </div>
             );
         }
-    }, [mainCard, cards]);
+    }, [mainCard, cards, onNextClick, onPrevClick]);
 
     return (
         <BasePage needAccess={true}>
+            <LanguageFilter onItemSelect={onLangChanged} />
             <PageName title={'Cards'} />
             {
-                cards.length > 0 
-                    ?   <><BookFilter onItemSelect={onFilterChanged} initialValue={isNumber(userBookId) ? +userBookId : 0} /><section className='user-cards-section'>
-                            <div className='user-card__container'>
-                                <ol className='user-cards__main-card-container'>
-                                    {mainCardItem}
-                                </ol>
-                                <span className='tooltip'>To see the meaning press and hold on the card.</span>
-                                <div className='user-cards__main-card-buttons'>
-                                    <button className='user_cards__card-button' onClick={onRepeatedClick}>mark as repeated</button>
-                                    <button className='user_cards__card-button'>mark as finished</button>
+                cards
+                    ?  <>
+                        {
+                            !userBookId && 
+                                <BookFilter
+                                    onItemSelect={onFilterChanged}
+                                    initialValue={isNumber(bookId) ? +bookId : 0} 
+                                />
+                        } 
+                        <section className='user-cards-section'>
+                                <div className='user-card__container'>
+                                    <ol className='user-cards__main-card-container'>
+                                        {mainCardItem}
+                                    </ol>
+                                    <span className='tooltip'>To see the meaning press and hold on the card.</span>
+                                    <div className='user-cards__main-card-buttons'>
+                                        <button className='user_cards__card-button' onClick={onRepeatedClick}>mark as repeated</button>
+                                        <button className='user_cards__card-button' onClick={onFinishedClick}>mark as finished</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <UserCardsList cards={cards} />
-                        </section></>
+                                <UserCardsList cards={cards} setCards={setCards} />
+                            </section></>
                     : <span className='card-text'>There is no cards yet.</span>
             }
             

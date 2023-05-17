@@ -9,18 +9,20 @@ import cross from 'src/static/images/cross-delete';
 import './userCardsList.scss';
 
 
-export default function UserCardsList({ cards }) {
-    console.log(cards);
+export default function UserCardsList({ cards, setCards }) {
     const onButtonClick = useCallback(async (e) => {
         const card = Array.from(cards).find(c => c.id === +e.target.id);
 
         const response = await requestHelper.get(
-            urlHelper.getUrlByTemplate(serviceUrls.deleteCard, { bookId: card.book, id: card.id }), {
+            urlHelper.getUrlByTemplate(serviceUrls.deleteCard, { cardId: card.id }), {
             method: 'DELETE',
+            credentials: 'include',
             headers: {}
-        }, true);
+        }, true, true);
 
-        window.location.reload();
+        if (response) {
+            setCards(cards.filter(c => c.id !== card.id));
+        }
     }, [cards]);
 
     const userCards = useMemo(() => cards.map((card, ind) => {

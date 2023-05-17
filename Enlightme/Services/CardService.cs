@@ -4,6 +4,7 @@ using Enlightme.Entities;
 using Enlightme.Helpers;
 using Enlightme.Repositories;
 using Enlightme.Specifications;
+using System.Net;
 
 namespace Enlightme.Services;
 
@@ -37,6 +38,20 @@ public class CardService
         return await cardRepository.Create(card);
     }
 
+    public async Task<bool> DeleteCard(int cardId)
+    {
+        try
+        {
+            await cardRepository.Delete(new Specification<Card>(c => c.Id == cardId));
+
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
     public async Task<int> GetNotificationAmount(int userId)
     {
         Specification<Card> specification = new(
@@ -50,13 +65,28 @@ public class CardService
 
     public async Task<IReadOnlyList<Card>> GetCards(int userId)
     {
-        var included = new IncludedPropertyCollection<Card>() { 
-            c => c.Interval
+         var included = new IncludedPropertyCollection<Card>() { 
+            c => c.Interval,
+            c => c.Language
         };
 
         Specification<Card> specification = new(
             c => c.UserId == userId
             && c.UpdateTime.AddMinutes(c.Interval.Minutes) < DateTime.Now);
+
+        var cards = await cardRepository.GetList(specification, included);
+
+        return cards;
+    }
+
+    public async Task<IReadOnlyList<Card>> GetAllCards(int userId)
+    {
+        var included = new IncludedPropertyCollection<Card>() {
+            c => c.Interval,
+            c => c.Language
+        };
+
+        Specification<Card> specification = new(c => c.UserId == userId);
 
         var cards = await cardRepository.GetList(specification, included);
 

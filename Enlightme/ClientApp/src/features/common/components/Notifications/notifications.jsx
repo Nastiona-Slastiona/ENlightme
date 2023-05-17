@@ -9,7 +9,7 @@ const Notifications = ({ notifications, icon, darkMode=false }) => {
     const notificationsClassName = classNames('notifications-value', { 'notifications-value--dark': darkMode });
 
     return (
-        <Link to={routes.USER_CARDS} className='notifications-link'>
+        <Link to={routes.USER_CARDS_LEARN} className='notifications-link'>
             <img className='notifications' src={icon} />
             <span className={notificationsClassName} key={0}>{notifications}</span>
         </Link>
