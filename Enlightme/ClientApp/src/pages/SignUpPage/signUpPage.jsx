@@ -128,7 +128,7 @@ export default function SignUpPage() {
 
     return (
         <div className="page-container">
-            <BasePage>
+            <BasePage isLoginPage>
                 <PageName title={'Sign Up'} />
                 <section className="sign-up-page__section">
                     <form className="sign-up-page__form" onSubmit={onFormSubmit}>

@@ -7,8 +7,16 @@
    padding: 10px;
 }
 
+.add-book__form-column {
+    display: block;
+ }
+ 
+
 .add-book__genre {
     margin: 35px 0;
+    display: flex;
+
+    flex-direction: column;
 }
 
 .add-book__description {

@@ -34,6 +34,7 @@ export default function UserCardsPage() {
     const dispatch = useDispatch();
     const [bookId, setBookId] = useState(userBookId);
     const [cards, setCards] = useState();
+    const [filtredCards, setFiltredCards] = useState(cards);
     const [mainCard, setMainCard] = useState();
 
     useEffect(() => {
@@ -100,14 +101,21 @@ export default function UserCardsPage() {
 
     const onFilterChanged = useCallback((selectedBookId) => {
         setBookId(selectedBookId);
-        setCards(cards.filter(c => c.bookId === +selectedBookId));
-        setMainCard(cards.filter(c => c.bookId === +selectedBookId)[0]);
-    }, [setBookId, setCards, cards, setMainCard]);
+        if (+selectedBookId === 0) {
+            setFiltredCards(cards);
+        } else {
+            setFiltredCards(cards.filter(c => c.bookId === +selectedBookId));
+            setMainCard(cards.filter(c => c.bookId === +selectedBookId)[0]);
+        }
+    }, [setBookId, setFiltredCards, cards, setMainCard]);
 
     const onLangChanged = useCallback((selectedLangId) => {
-        console.log(cards.filter(c => c.languageId === +selectedLangId));
-        setCards(cards.filter(c => c.languageId === +selectedLangId));
-        setMainCard(cards.filter(c => c.languageId === +selectedLangId)[0]);
+        if (+selectedLangId === 0) {
+            setFiltredCards(cards);
+        } else {
+            setFiltredCards(cards.filter(c => c.languageId === +selectedLangId));
+            setMainCard(cards.filter(c => c.languageId === +selectedLangId)[0]);
+        }
     }, [setBookId, setCards, cards, setMainCard]);
 
     const onPrevNextClick = useCallback((isPrev = false) => {
@@ -181,7 +189,7 @@ export default function UserCardsPage() {
                                         <button className='user_cards__card-button' onClick={onFinishedClick}>mark as finished</button>
                                     </div>
                                 </div>
-                                <UserCardsList cards={cards} setCards={setCards} />
+                                <UserCardsList cards={filtredCards || cards} setCards={filtredCards ? setFiltredCards : setCards} />
                             </section></>
                     : <span className='card-text'>There is no cards yet.</span>
             }

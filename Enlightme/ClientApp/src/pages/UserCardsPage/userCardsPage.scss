@@ -67,8 +67,9 @@
 
     transition: all .8s ease-in-out;
 
+    background-color: $secondary-color--less-opacity;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 20px;
-    background-color: $secondary-color;
 
     transform-style: preserve-3d;
 
@@ -125,10 +126,10 @@
 
     transition: .3s;
 
-    color: $secondary-color;
+    color: $primary-color;
     border: none;
     border-radius: 15px;
-    background-color: $accent-color;
+    background-color: $accent-color--light;
 
     @include typography-primary-bold;
 

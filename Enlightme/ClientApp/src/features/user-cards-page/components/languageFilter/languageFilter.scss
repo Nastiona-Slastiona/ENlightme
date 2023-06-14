@@ -16,7 +16,7 @@
     border: none;
     border-radius: 15px;
     outline: none;
-    box-shadow: 3px 3px 10px lighten($primary-color, 30);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
     @include typography-primary-bold;
 }

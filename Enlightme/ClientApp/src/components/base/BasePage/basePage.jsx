@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import requestHelper from 'src/helpers/requestHelper';
 import serviceUrls from 'src/constants/serviceUrls';
+import routes from "src/constants/routes";
 
 import Header from "src/features/common/components/Header/header";
 import Footer from "src/features/common/components/Footer/footer";
 
 import './basePage.scss';
 
-export default function BasePage({ children }) {
+export default function BasePage({ children, isLoginPage }) {
     const dispatch = useDispatch();
     const isAuth = JSON.parse(localStorage.getItem('isAuth'));
     const userName = useSelector(state => state.users.username);
@@ -61,10 +62,10 @@ export default function BasePage({ children }) {
             }
         )();
 
-        // if (!isAuth && !isLoginPage) {
-        //     window.location.replace(routes.LOG_IN);
-        // }
-    }, []);
+        if (!isAuth && !isLoginPage) {
+            window.location.replace(routes.LOG_IN);
+        }
+    }, [isAuth]);
 
 
     return (

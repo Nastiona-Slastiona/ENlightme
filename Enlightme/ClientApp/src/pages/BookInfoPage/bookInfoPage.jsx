@@ -50,8 +50,7 @@ export default function BookInfoPage() {
         if (!isAuth) {
             window.location.replace(routes.LOG_IN);
         }
-        
-        // const url = urlHelper.getUrlByTemplate(serviceUrls.paymentCheckout, { id: bookId });
+ 
         const data = await requestHelper.get(
             url, {
                 method: 'POST',

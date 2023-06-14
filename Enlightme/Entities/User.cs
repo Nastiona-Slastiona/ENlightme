@@ -25,5 +25,5 @@ public class User: IHasId
     public bool IsSuperUser { get; set; }
     public bool ShouldSendNotifications { get; set; }
 
-    public byte[] Image { get; set; }
+    public byte[]? Image { get; set; }
 }
