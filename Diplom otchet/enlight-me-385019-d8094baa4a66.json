@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "enlight-me-385019",
+  "private_key_id": "d8094baa4a66311e7ec16613fe12cc604539ccda",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDH2vamqyQ4NuHi\nCNpqpZCTSzknXkR9kA9AvUzHffKZ85/gUZ/j6Td+bNsiDR3yjdnyFXRsn724AlpW\nKtY1zz0HGE7Fw3/VTs8yR4KqfacwkzkwwYmwyZTQMDWaXxHh4WWc3XtU31DqYJjh\neQ3nId0MOS8Yq9di2cZlaeUHQQb4YozW6upLIZnf/w/hQoHfh7O0HSNZTPpbCVGw\nTnMb8WtK2//XcSCgVUXo4lG1OcEtPxwE132epZqPV2ylvw8vZI3PuHAq1PqANbvZ\nXQ6eg1FyG7M78r6e0XrIr00yogxbl/70r3tUl6rjphfKFEhFAzJEmZzzwmaqnExh\nxJ8EuW27AgMBAAECggEAYVd4mFA2OX0dwxrdy2DtzJgwc8jZ4jB3BWjOS0JAlhSP\n09Hd50Ox6E175BdwdTH7LAqgJMIfRU88EckWgan5RwnjYDaq/km+6HXlIkZGVwX2\nLpWti2J7rXU1voU8sAC5HdDQn9OPVUEMZZGxIFkhkbEOi90y8K4ykDWmPETDcNmu\n7vxhqvkOwTTToocPNah7FOQ0R0t0xjLOZ8osm5TZunXivhfT0zFkjzXG+gEnIfqB\nIisXhYApYZhCYuuC6NZcGXUs6egRWqliBNnDWoxOMkvJZWT7DVJUBSb0NcZrgnHU\nt/cABjiRO41F0zlSeW4WF/vNpXWszalrZa8f7fo/gQKBgQDmeqSTo0LggGKAPS6+\nhVRVdpt+axUivJDQ06Vjo8TTtd9Voo6Fa3HCB7FhXnTFeR8oPRvkek/TkkfRAImc\ne9XJUGWBhgQW54j8UFcXw7bpduQjL56gMmIwcTH0Ut8pAdXZ+oGkdR2CdN5K+S+i\nt7IYcn+ky75m/ha/Q9BYfcXVgQKBgQDd/DvPpT7lsID+bu+E50kfz2gXZycXk6GS\nk8M9ACDXJ0cKPs8stkCbwQ+GvQOyq0s08t/KZUNN6eZ2QEJA06KeDSJSCcA5vpx0\nSlp04JVkPDXs0jmoU+ggvAstNzzRFRKw9WrgBJWqqc+i8rAcTx0gpzMeacre5dWT\n3GYvgle5OwKBgDumzmWvwaVdVSEftLN2yqb79a64hFXjPA/wV0P8pPqufckqM3zw\nnBa96vjqe4qImLnPZyKxTWvS1mePng40NtbNyhfF2dUbw+aZ3JC4BOVT8iPxNTr9\nD1C+W1GDCWMRqImsPlWUQjj7inUZHW0d4ihVqhe66+K4LKcAJDJjCwsBAoGBALAT\nVSHUEbrAsOCf/85sYh0gN5FwmZpi2GLaX59wDZx7JCclQNFXUpH4pacbH+bFZeb+\nyrHQdn1DjTC4sZSYCcHR6yolX9qtrY20OGHCjdyuwZsx+NfijhoA7eCUkuHJFEVW\ntMox+MEg5nh6hWQ/AHyZArwZ7/ezWCBrToZandhnAoGAdbMwRKTIrosuOQ52tUaq\nNiLvERmA42IG38YF+sCpvijZ4Adez+TMHWHhKyDHAxY876CGz4mFy0w0v/MV7obL\nvuMnqxw/Jkollf3fdSki4DrrcCuzgnshaYu6ZC5wg9RiHa5RD3jnNslPvY4EVvl+\nBupiqnn5++RVhqG5cO1pG9w=\n-----END PRIVATE KEY-----\n",
+  "client_email": "enlightme@enlight-me-385019.iam.gserviceaccount.com",
+  "client_id": "110389415407962047497",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/enlightme%40enlight-me-385019.iam.gserviceaccount.com"
+}
